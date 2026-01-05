@@ -1,23 +1,20 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
-import { Documento } from '../../core/models/documento';
+import { Documento } from '../../models/documento';
 
 @Component({
   selector: 'app-documentos',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: './documentos.html',
   styleUrl: './documentos.css'
 })
-export class DocumentosComponent {
+export class Documentos {
 
-  documentos: Documento[] = [
+  documentos = signal<Documento[]>([
     {
       id: 1,
       nombre: 'Apuntes Tema 1',
-      asignatura: 'Algoritmo y Programación',
+      asignatura: 'Algoritmia',
       carrera: 'Ingeniería Informática',
       curso: '2º',
       tipo: 'Teoría',
@@ -32,6 +29,6 @@ export class DocumentosComponent {
       tipo: 'Prácticas',
       pdfUrl: 'assets/docs/practica2.pdf'
     }
-  ];
+  ]);
 
 }

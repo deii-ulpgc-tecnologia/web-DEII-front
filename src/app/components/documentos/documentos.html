@@ -2,36 +2,33 @@
 
   <h1>Documentos</h1>
 
-  <div class="card mb-3" *ngFor="let documento of documentos">
+  @for (documento of documentos(); track documento.id) {
+    <div class="card mb-3">
+      <div class="card-body">
 
-    <div class="card-body">
+        <h5>{{ documento.nombre }}</h5>
 
-      <h5>{{ documento.nombre }}</h5>
+        <p>{{ documento.asignatura }} - {{ documento.curso }}</p>
+        <p>{{ documento.carrera }}</p>
+        <p>{{ documento.tipo }}</p>
 
-      <p>
-        {{ documento.asignatura }} -
-        {{ documento.curso }}
-      </p>
+        <a
+          [href]="documento.pdfUrl"
+          target="_blank"
+          class="btn btn-secondary"
+        >
+          Ver PDF
+        </a>
 
-      <p>{{ documento.tipo }}</p>
+        <button
+          class="btn btn-primary ms-2"
+          [routerLink]="['/documentos/editar', documento.id]"
+        >
+          Editar
+        </button>
 
-      <a
-        [href]="documento.pdfUrl"
-        target="_blank"
-        class="btn btn-secondary"
-      >
-        Ver PDF
-      </a>
-
-      <button
-        class="btn btn-primary ms-2"
-        [routerLink]="['/documentos/editar', documento.id]"
-      >
-        Editar
-      </button>
-
+      </div>
     </div>
-
-  </div>
+  }
 
 </div>
