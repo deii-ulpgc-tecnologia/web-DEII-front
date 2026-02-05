@@ -1,1 +1,72 @@
-<p>documento-form works!</p>
+<div class="container mt-4">
+  <h1>Editar documento</h1>
+
+  <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input
+      class="form-control"
+      type="text"
+      [ngModel]="documento().nombre"
+      (ngModelChange)="actualizarCampo('nombre', $event)"
+    >
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Asignatura</label>
+    <input
+      class="form-control"
+      type="text"
+      [ngModel]="documento().asignatura"
+      (ngModelChange)="actualizarCampo('asignatura', $event)"
+    >
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Carrera</label>
+    <input
+      class="form-control"
+      type="text"
+      [ngModel]="documento().carrera"
+      (ngModelChange)="actualizarCampo('carrera', $event)"
+    >
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Curso</label>
+    <input
+      class="form-control"
+      type="text"
+      [ngModel]="documento().curso"
+      (ngModelChange)="actualizarCampo('curso', $event)"
+    >
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Tipo</label>
+    <select
+      class="form-select"
+      [ngModel]="documento().tipo"
+      (ngModelChange)="actualizarCampo('tipo', $event)"
+    >
+      <option value="Teoría">Teoría</option>
+      <option value="Prácticas">Prácticas</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">PDF</label>
+    <input
+      class="form-control"
+      type="text"
+      [value]="documento().pdfUrl"
+      disabled
+    >
+    <small class="text-muted">
+      El PDF es estático. Solo se editan sus características.
+    </small>
+  </div>
+
+  <button class="btn btn-success" (click)="guardarCambios()">
+    Guardar cambios
+  </button>
+</div>

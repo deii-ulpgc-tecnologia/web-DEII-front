@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Documento } from '../../models/documento';
+import { Documento } from '../../core/models/documento';
 
 @Component({
   selector: 'app-documentos',
@@ -9,26 +9,15 @@ import { Documento } from '../../models/documento';
   styleUrl: './documentos.css'
 })
 export class Documentos {
-
   documentos = signal<Documento[]>([
     {
       id: 1,
       nombre: 'Apuntes Tema 1',
-      asignatura: 'Algoritmia',
+      asignatura: 'Algoritmos y Estructuras de Datos',
       carrera: 'Ingeniería Informática',
       curso: '2º',
       tipo: 'Teoría',
       pdfUrl: 'assets/docs/tema1.pdf'
-    },
-    {
-      id: 2,
-      nombre: 'Práctica 2',
-      asignatura: 'ASR',
-      carrera: 'Ingeniería Informática',
-      curso: '3º',
-      tipo: 'Prácticas',
-      pdfUrl: 'assets/docs/practica2.pdf'
     }
   ]);
-
 }
