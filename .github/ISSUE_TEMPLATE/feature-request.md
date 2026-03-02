@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: Historias de usuario
-title: ''
+title: FU-XX | Historia de usuario
 labels: ''
 assignees: ''
 
