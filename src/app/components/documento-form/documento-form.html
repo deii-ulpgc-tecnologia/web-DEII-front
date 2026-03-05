@@ -12,33 +12,61 @@
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Asignatura</label>
-    <input
-      class="form-control"
-      type="text"
-      [ngModel]="documento().asignatura"
-      (ngModelChange)="actualizarCampo('asignatura', $event)"
+    <label class="form-label">Grado</label>
+    <select
+      class="form-select"
+      [ngModel]="gradoSeleccionado()"
+      (ngModelChange)="cambiarGrado($event)"
     >
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Carrera</label>
-    <input
-      class="form-control"
-      type="text"
-      [ngModel]="documento().carrera"
-      (ngModelChange)="actualizarCampo('carrera', $event)"
-    >
+      @for (grado of grados(); track grado) {
+        <option [value]="grado">{{ grado }}</option>
+      }
+    </select>
   </div>
 
   <div class="mb-3">
     <label class="form-label">Curso</label>
+    <select
+      class="form-select"
+      [ngModel]="cursoSeleccionado()"
+      (ngModelChange)="cambiarCurso($event)"
+    >
+      @for (curso of cursos(); track curso) {
+        <option [value]="curso">{{ curso }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Asignatura</label>
+
     <input
       class="form-control"
       type="text"
-      [ngModel]="documento().curso"
-      (ngModelChange)="actualizarCampo('curso', $event)"
+      placeholder="Busca por nombre, acrónimo o alias..."
+      [ngModel]="busquedaAsignatura()"
+      (ngModelChange)="busquedaAsignatura.set($event)"
     >
+
+    <div class="list-group mt-2">
+      @for (asignatura of asignaturasFiltradas(); track asignatura.id) {
+        <button
+          type="button"
+          class="list-group-item list-group-item-action"
+          (click)="seleccionarAsignatura(asignatura)"
+        >
+          <strong>{{ asignatura.acronimo }}</strong>
+          - {{ asignatura.nombre }}
+          <small class="text-muted">
+            {{ asignatura.curso }} · {{ asignatura.semestre }}
+          </small>
+        </button>
+      } @empty {
+        <div class="list-group-item text-muted">
+          No hay asignaturas para ese grado, curso o búsqueda.
+        </div>
+      }
+    </div>
   </div>
 
   <div class="mb-3">
