@@ -1,0 +1,88 @@
+/* Familia "Rubik" bajo licencia SIL Open Font */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* VARIABLES GLOBALES DE MARCA (CSS Custom Properties) */
+:root {
+    /* Tinta Corporativa Principal - Naranja */
+    --ulpgc-naranja: #FFA100;
+
+    /* Tinta Corporativa Principal - Azul */
+    --ulpgc-azul: rgb(0, 102, 161);
+
+    /* Tinta Corporativa Secundaria - Gris Profundo */
+    --ulpgc-gris: #545859;
+
+    /* Familia Tipográfica */
+    --font-ulpgc: 'Rubik', sans-serif;
+
+    /* Degradado de fondo (en revisión) */
+    --ulpgc-fondo-gradient: linear-gradient(135deg, #FFB700 0%, #FFA100 100%);
+  
+    /* Sombras y bordes comunes */
+    --shadow-card: 0 4px 6px rgba(0,0,0,0.1);
+    --border-radius-md: 10px;
+}
+
+/* CLASES GLOBALES PARA TÍTULOS */
+/* Tipografía Rubik a todas las cabeceras por defecto */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-ulpgc);
+}
+
+/* Jerarquía visual con pesos Medium y Bold */
+.titulo-principal {
+    color: var(--ulpgc-naranja);
+    font-family: var(--font-ulpgc);
+    font-weight: 700; /* Equivalente a Rubik Bold */
+}
+
+.titulo-secundario {
+    color: var(--ulpgc-azul);
+    font-family: var(--font-ulpgc);
+    font-weight: 500; /* Equivalente a Rubik Medium */
+}
+
+.titulo-gris {
+    color: var(--ulpgc-gris);
+    font-family: var(--font-ulpgc);
+    font-weight: 400; /* Equivalente a Rubik Regular */
+}
+
+/* UTILIDADES PARA BOTONES RÁPIDOS */
+.btn {
+    font-family: var(--font-ulpgc);
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-naranja {
+    background-color: var(--ulpgc-naranja);
+    color: white;
+}
+
+.btn-naranja:hover { 
+    background-color: #e69100; 
+}
+
+.btn-azul {
+    background-color: var(--ulpgc-azul);
+    color: white;
+}
+
+.btn-azul:hover { 
+    background-color: #005a8e; 
+}
+
+.btn-icon {
+    background: transparent;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.btn-icon:hover { 
+    background-color: rgba(0,0,0,0.05); 
+}
