@@ -60,6 +60,33 @@ export class DocumentoForm {
     },
     {
       id: 3,
+      nombre: 'Matemáticas Discretas',
+      acronimo: 'MD',
+      grado: 'Ingeniería Informática',
+      curso: '1º',
+      semestre: 'Primer semestre',
+      alias: []
+    },
+    {
+      id: 4,
+      nombre: 'Habilidades Profesionales Para Ingenieros',
+      acronimo: 'HPI',
+      grado: 'Ingeniería Informática',
+      curso: '1º',
+      semestre: 'Primer semestre',
+      alias: ['Habilidades Profesionales', 'Inglés', 'Ingles']
+    },
+    {
+      id: 5,
+      nombre: 'Algebra y Geometría',
+      acronimo: 'AG',
+      grado: 'Ingeniería Informática',
+      curso: '1º',
+      semestre: 'Primer semestre',
+      alias: ['AyG', 'Álgebra', 'Algebra', 'Geometría', 'Geometria']
+    },
+    {
+      id: 6,
       nombre: 'Matemáticas para la Computación',
       acronimo: 'MC',
       grado: 'Ingeniería Informática',
@@ -68,7 +95,7 @@ export class DocumentoForm {
       alias: ['Cálculo', 'Calculo']
     },
     {
-      id: 4,
+      id: 7,
       nombre: 'Fundamentos físicos de la Informática',
       acronimo: 'FFI',
       grado: 'Ingeniería Informática',
@@ -77,7 +104,169 @@ export class DocumentoForm {
       alias: ['Física', 'Fisica']
     },
     {
-      id: 5,
+      id: 8,
+      nombre: 'Fundamentos de Programación II',
+      acronimo: 'FP2',
+      grado: 'Ingeniería Informática',
+      curso: '1º',
+      semestre: 'Segundo semestre',
+      alias: []
+    },
+    {
+      id: 9,
+      nombre: 'La empresa y sus procesos',
+      acronimo: 'EP',
+      grado: 'Ingeniería Informática',
+      curso: '1º',
+      semestre: 'Segundo semestre',
+      alias: []
+    },
+    {
+      id: 10,
+      nombre: 'Estructura de Computadores',
+      acronimo: 'EC',
+      grado: 'Ingeniería Informática',
+      curso: '1º',
+      semestre: 'Primer semestre',
+      alias: []
+    },
+    {
+      id: 11,
+      nombre: 'Algoritmos y Programación',
+      acronimo: 'AP',
+      grado: 'Ingeniería Informática',
+      curso: '2º',
+      semestre: 'Primer semestre',
+      alias: []
+    },
+    {
+      id: 12,
+      nombre: 'Métodos Estadísticos',
+      acronimo: 'ME',
+      grado: 'Ingeniería Informática',
+      curso: '2º',
+      semestre: 'Primer semestre',
+      alias: []
+    },
+    {
+      id: 13,
+      nombre: 'Periféricos e Interfaces',
+      acronimo: 'PI',
+      grado: 'Ingeniería Informática',
+      curso: '2º',
+      semestre: 'Primer semestre',
+      alias: []
+    },
+{
+      id: 14,
+      nombre: 'Ingeniería de Software I',
+      acronimo: 'IS1',
+      grado: 'Ingeniería Informática',
+      curso: '2º',
+      semestre: 'Primer semestre',
+      alias: ['Ingeniería de Software', 'IS']
+    },
+    {
+      id: 15,
+      nombre: 'Tecnologías de la Programación',
+      acronimo: 'TP',
+      grado: 'Ingeniería Informática',
+      curso: '2º',
+      semestre: 'Primer semestre',
+      alias: []
+    },
+    {
+      id: 16,
+      nombre: 'Arquitectura de Computadores',
+      acronimo: 'AC',
+      grado: 'Ingeniería Informática',
+      curso: '2º',
+      semestre: 'Segundo semestre',
+      alias: []
+    },
+    {
+      id: 17,
+      nombre: 'Fundamentos de los Sistemas Operativos',
+      acronimo: 'FSO',
+      grado: 'Ingeniería Informática',
+      curso: '2º',
+      semestre: 'Segundo semestre',
+      alias: []
+    },
+    {
+      id: 18,
+      nombre: 'Bases de Datos I',
+      acronimo: 'BD1',
+      grado: 'Ingeniería Informática',
+      curso: '2º',
+      semestre: 'Segundo semestre',
+      alias: []
+    },
+    {
+      id: 19,
+      nombre: 'Métodos Numéricos',
+      acronimo: 'MN',
+      grado: 'Ingeniería Informática',
+      curso: '2º',
+      semestre: 'Segundo semestre',
+      alias: []
+    },
+    {
+      id: 20,
+      nombre: 'Estructuras de Datos y Programación',
+      acronimo: 'EDP',
+      grado: 'Ingeniería Informática',
+      curso: '2º',
+      semestre: 'Segundo semestre',
+      alias: []
+    },
+    {
+      id: 21,
+      nombre: 'Ingeniería de Software II',
+      acronimo: 'IS2',
+      grado: 'Ingeniería Informática',
+      curso: '3º',
+      semestre: 'Primer semestre',
+      alias: []
+    },
+    {
+      id: 22,
+      nombre: 'Redes de Computadores',
+      acronimo: 'RC',
+      grado: 'Ingeniería Informática',
+      curso: '3º',
+      semestre: 'Primer semestre',
+      alias: []
+    },
+    {
+      id: 23,
+      nombre: 'Fundamentos de los Sistemas Inteligentes',
+      acronimo: 'FSI',
+      grado: 'Ingeniería Informática',
+      curso: '3º',
+      semestre: 'Primer semestre',
+      alias: []
+    },
+    {
+      id: 24,
+      nombre: 'Bases de Datos II',
+      acronimo: 'BD2',
+      grado: 'Ingeniería Informática',
+      curso: '3º',
+      semestre: 'Primer semestre',
+      alias: []
+    },
+    {
+      id: 25,
+      nombre: 'Administración de Sistemas Operativos',
+      acronimo: 'ASO',
+      grado: 'Ingeniería Informática',
+      curso: '3º',
+      semestre: 'Primer semestre',
+      alias: []
+    },
+    {
+      id: 26,
       nombre: 'Administración de Servicios en Red',
       acronimo: 'ASR',
       grado: 'Ingeniería Informática',
@@ -86,7 +275,7 @@ export class DocumentoForm {
       alias: ['Administración de Sistemas en Red']
     },
     {
-      id: 6,
+      id: 27,
       nombre: 'Virtualización de Procesos Distribuidos',
       acronimo: 'VPD',
       grado: 'Ingeniería Informática',
@@ -95,7 +284,35 @@ export class DocumentoForm {
       alias: []
     },
     {
-      id: 7,
+      id: 28,
+      nombre: 'Programación Web y Móvil',
+      acronimo: 'PWM',
+      grado: 'Ingeniería Informática',
+      curso: '3º',
+      semestre: 'Segundo semestre',
+      alias: []
+    },
+    {
+      id: 29,
+      nombre: 'Producción de Software',
+      acronimo: 'PS',
+      grado: 'Ingeniería Informática',
+      curso: '3º',
+      semestre: 'Segundo semestre',
+      alias: []
+    },
+    {
+      id: 30,
+      nombre: 'Visión por Computador',
+      acronimo: 'VC',
+      grado: 'Ingeniería Informática',
+      curso: '4º',
+      semestre: 'Primer semestre',
+      alias: []
+    },
+    
+    {
+      id: 40,
       nombre: 'Seguridad de la información',
       acronimo: 'SI',
       grado: 'Ingeniería Informática',
