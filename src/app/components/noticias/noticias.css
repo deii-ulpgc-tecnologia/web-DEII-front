@@ -1,0 +1,184 @@
+/* Contenedor principal */
+.contenedor-pagina {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: var(--font-ulpgc);
+}
+
+.titulo-seccion {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+}
+
+/* ============================
+   CARRUSEL
+   ============================ */
+.carrusel-contenedor {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.btn-flecha {
+  margin-top: 120px;
+  background: #ffffff;
+  border: none;
+  border-radius: 25px;
+  width: 50px;
+  height: 160px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.btn-flecha:hover {
+  background: var(--ulpgc-azul);
+}
+
+.btn-flecha svg {
+  width: 30px;
+  height: 30px;
+  color: var(--ulpgc-gris);
+  transition: color 0.3s ease;
+}
+
+.btn-flecha:hover svg {
+  color: white;
+}
+
+.carrusel-contenido {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer; 
+  transition: transform 0.2s ease;
+}
+
+.carrusel-contenido:hover {
+  transform: scale(1.02);
+}
+
+.imagen-carrusel {
+  width: 100%;
+  height: auto; 
+  aspect-ratio: 16 / 9; /* Formato panorámico estándar */
+  max-height: 400px; 
+  object-fit: cover; /* 'cover' recorta un poco para llenar, si se prefiere que se vea TODA la imagen aunque queden bordes grises, cambiarlo a 'contain' */
+  background-color: #d9d9d9;
+  border-radius: var(--border-radius-md); /* Bordes redondeados corporativos */
+}
+
+.titulo-carrusel {
+  margin-top: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ============================
+   LISTA DE NOTICIAS (TARJETAS)
+   ============================ */
+.lista-noticias {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tarjeta-noticia {
+  display: flex;
+  background-color: #efefef; /* Fondo gris claro según el diseño */
+  border-radius: var(--border-radius-md);
+  padding: 1.5rem;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Efecto cebra para el fondo de las tarjetas */
+.tarjeta-noticia:nth-child(even) {
+  background-color: #e4e7e9;
+}
+
+/* Clase para invertir el orden (Imagen a la derecha) */
+.tarjeta-noticia.reverso {
+  flex-direction: row-reverse;
+}
+
+/* Ajustes de flex para que se vea balanceado */
+.tarjeta-imagen-wrapper {
+  flex: 0 0 30%; /* La imagen ocupa el 30% del ancho */
+  display: flex;
+}
+
+.tarjeta-imagen {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1; /* Cuadrado como en el diseño */
+  object-fit: cover;
+  border: 1px solid #ccc; /* Simula la cruz del placeholder */
+}
+
+.tarjeta-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* En la tarjeta inversa, se alinea el texto a la derecha como en el mockup */
+.tarjeta-noticia.reverso .tarjeta-info {
+  text-align: right;
+}
+
+.fecha {
+  font-size: 0.9rem;
+  color: var(--ulpgc-gris);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.tarjeta-info h3 {
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+  /* El color lo hereda de .titulo-secundario configurado en el CSS global */
+}
+
+.descripcion {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+}
+
+/* ============================
+   RESPONSIVE (Móviles)
+   ============================ */
+@media (max-width: 768px) {
+  .carrusel-contenedor {
+    flex-direction: column;
+    position: relative;
+  }
+  
+  /* 3. ¡Desaparecen las flechas en el móvil! */
+  .btn-flecha {
+    display: none; 
+  }
+
+  .tarjeta-noticia, .tarjeta-noticia.reverso {
+    flex-direction: column; 
+  }
+
+  .tarjeta-noticia.reverso .tarjeta-info {
+    text-align: left;
+  }
+  
+  .tarjeta-imagen-wrapper {
+    width: 100%;
+  }
+}

@@ -1,0 +1,43 @@
+<section class="contenedor-pagina">
+  <h1 class="titulo-seccion">Noticias</h1>
+
+  <div class="carrusel-contenedor">
+    <button class="btn-flecha" (click)="lastNoticia()" aria-label="Anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    
+    <div class="carrusel-contenido" 
+         (click)="goToNoticia(starredNoticia.id)"
+         (touchstart)="onTouchStart($event)" 
+         (touchend)="onTouchEnd($event)">
+         
+      <img [src]="starredNoticia.imageUrl" [alt]="starredNoticia.title" class="imagen-carrusel">
+      <h2 class="titulo-carrusel">{{ starredNoticia.title }}</h2>
+      
+      <span class="overlay-link" style="color: var(--ulpgc-azul); font-weight: bold; text-decoration: underline;">
+        Ver noticia completa
+      </span>
+      
+    </div>
+
+    <button class="btn-flecha" (click)="nextNoticia()" aria-label="Siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <div class="lista-noticias">
+    @for (noticia of noticias; track noticia.id; let i = $index) {
+      <article class="tarjeta-noticia" [class.reverso]="i % 2 !== 0">
+        <div class="tarjeta-imagen-wrapper">
+          <img [src]="noticia.imageUrl" [alt]="noticia.title" class="tarjeta-imagen">
+        </div>
+        
+        <div class="tarjeta-info">
+          <span class="fecha">{{ noticia.date }}</span>
+          <h3 class="titulo-secundario">{{ noticia.title }}</h3>
+          <p class="descripcion">{{ noticia.description }}</p>
+        </div>
+      </article>
+    }
+  </div>
+</section>
