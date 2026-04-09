@@ -1,6 +1,6 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router'; // Para ir al formulario de creación
+import { Router } from '@angular/router';
 import { NoticiasService } from '../../core/services/noticias';
 import { Noticia } from '../../core/models/noticia';
 
@@ -15,76 +15,85 @@ export class Noticias {
   private noticiasService = inject(NoticiasService);
   private router = inject(Router);
 
-  // Exponemos la lista ordenada automáticamente del servicio
+  // Lista de noticias general (ordenada: fijadas primero)
   noticias = this.noticiasService.noticiasOrdenadas;
 
-  // 👈 NUEVO SIGNAL: Simula el rol (false = Público, true = Delegado)
+  // NUEVO: El carrusel solo muestra las fijadas. 
+  // (Si no hay ninguna fijada, mostramos todas por defecto para que no quede en blanco).
+  noticiasCarrusel = computed(() => {
+    const fijadas = this.noticias().filter(n => n.pinned);
+    return fijadas.length > 0 ? fijadas : this.noticias();
+  });
+
+  // Estado del botón "Ver como Delegado"
   esDelegado = signal(false);
 
   index = 0;
   private touchStartX = 0;
   private touchEndX = 0;
 
+  // Devuelve la noticia actual del carrusel de forma segura
   get starredNoticia() {
-    return this.noticias()[this.index];
+    const carrusel = this.noticiasCarrusel();
+    // Previene errores si borramos la noticia que estábamos viendo
+    return carrusel[this.index % carrusel.length]; 
   }
 
+  // --- LÓGICA DEL CARRUSEL ---
   nextNoticia() {
-    this.index = (this.index + 1) % this.noticias().length;
+    const total = this.noticiasCarrusel().length;
+    this.index = (this.index + 1) % total;
   }
 
   lastNoticia() {
-    this.index = (this.index - 1 + this.noticias().length) % this.noticias().length;
+    const total = this.noticiasCarrusel().length;
+    this.index = (this.index - 1 + total) % total;
   }
 
-  // --- LÓGICA DE GESTIÓN (Solo Delegado) ---
-
-  // Cambiar el rol temporalmente (para el botón de arriba)
+  // --- LÓGICA DE DELEGADO ---
   toggleRol() {
     this.esDelegado.update(val => !val);
   }
 
-  // Ir a la página de creación
   irACrearNoticia() {
     this.router.navigate(['/noticias/crear']);
   }
 
-  // Ir a la página de edición (mismo formulario pero con ID)
   irAEditarNoticia(id: number) {
     this.router.navigate(['/noticias/editar', id]);
   }
 
   toggleFijar(id: number) {
     this.noticiasService.togglePinNoticia(id);
+    this.index = 0; // Volvemos a la primera del carrusel al fijar/desfijar
   }
 
   borrarNoticia(noticia: Noticia) {
-    // CONFIRMACIÓN EXPLÍCITA
-    const confirmacion = confirm(`¿Estás TOTALMENTE seguro de que quieres borrar la noticia "${noticia.title}"? Esta acción no se puede deshacer.`);
-    
-    if (confirmacion) {
+    if (confirm(`¿Estás TOTALMENTE seguro de que quieres borrar la noticia "${noticia.title}"?`)) {
       this.noticiasService.deleteNoticia(noticia.id);
-      // Si borramos la que estaba destacada en el carrusel, reseteamos el índice
-      if (this.index >= this.noticias().length) {
-        this.index = 0;
-      }
+      this.index = 0; 
     }
   }
-  
+
+  // --- NAVEGACIÓN Y SWIPE ---
+  irANoticia(id: number) {
+    this.router.navigate(['/noticias', id]);
+  }
+
   onTouchStart(event: TouchEvent) {
     this.touchStartX = event.changedTouches[0].screenX;
   }
 
   onTouchEnd(event: TouchEvent) {
     this.touchEndX = event.changedTouches[0].screenX;
-    this.handleSwipe();
+    this.detectarDireccionArrastre();
   }
 
-  private handleSwipe() {
-    const swipeThreshold = 50; // Mínimo desplazamiento para considerar un swipe
-    if (this.touchEndX < this.touchStartX - swipeThreshold) {
-      this.nextNoticia();
-    } else if (this.touchEndX > this.touchStartX + swipeThreshold) {
+  detectarDireccionArrastre() {
+    const distanciaMinima = 50; 
+    if (this.touchEndX < this.touchStartX - distanciaMinima) {
+      this.nextNoticia(); 
+    } else if (this.touchEndX > this.touchStartX + distanciaMinima) {
       this.lastNoticia();
     }
   }

@@ -185,77 +185,76 @@
 
 
 /* ============================
-   ESTILOS DE GESTIÓN (ADMIN)
+   ESTILOS DE DELEGADO
    ============================ */
-   
-/* Barra de gestión superior */
-.barra-gestion {
+
+/* Alineación de la cabecera */
+.cabecera-pagina {
   display: flex;
-  justify-content: space-between; /* Interruptor izquierda, Crear derecha */
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  border-bottom: 2px solid #eee;
   padding-bottom: 1rem;
-  border-bottom: 2px dashed #ccc;
 }
 
-/* Estilo especial para la tarjeta si está fijada */
-.tarjeta-noticia.noticia-fijada {
-  border: 2px solid var(--ulpgc-naranja); /* Borde naranja corporativo */
-  position: relative; /* Para el icono de pin */
-}
-
-/* Icono de pin visual */
-.pin-indicator {
-  position: absolute;
-  top: -12px;
-  right: 20px;
-  background-color: var(--ulpgc-naranja);
-  color: white;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+.acciones-top {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  z-index: 5;
-}
-.pin-indicator svg { width: 18px; height: 18px; }
-
-/* Contenedor de herramientas dentro de la tarjeta */
-.tarjeta-info {
-  /* ... tu código anterior ... */
-  position: relative; /* Para las herramientas de delegado */
+  gap: 1rem;
 }
 
+/* Borde para saber visualmente qué noticias están en el carrusel cuando se edita*/
+.tarjeta-noticia.borde-fijado {
+  border: 2px solid var(--ulpgc-naranja);
+}
+
+/* Caja de herramientas flotante dentro de la tarjeta */
 .herramientas-delegado {
   position: absolute;
-  top: -1rem;
-  right: -1rem;
-  background-color: white;
-  padding: 5px;
-  border-radius: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  top: 0;
+  right: 0; /* Arriba a la derecha del texto */
+  background-color: rgba(255, 255, 255, 0.9);
+  /* padding: 5px; */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   display: flex;
   gap: 5px;
-  z-index: 10;
 }
 
-/* Estilo para los botones de icono de gestión */
+/* En la tarjeta inversa, ponemos los botones a la izquierda para que no tapen la imagen */
+.tarjeta-noticia.reverso .herramientas-delegado {
+  right: auto;
+  left: 0;
+}
+
+/* Botones de acción */
 .btn-icon {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 5px;
-  border-radius: 50%;
+  padding: 6px;
+  border-radius: 4px;
   color: var(--ulpgc-gris);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s;
 }
-.btn-icon:hover { background-color: #eee; color: var(--ulpgc-azul); }
-.btn-icon svg { width: 20px; height: 20px; }
 
-/* Botón de borrar en rojo al hover */
+.btn-icon:hover { background-color: #eee; color: var(--ulpgc-azul); }
+.btn-icon svg { width: 22px; height: 22px; }
+
+/* El de borrar en rojo */
 .btn-icon.btn-borrar:hover {
   background-color: #ffebee;
   color: #d32f2f;
+}
+
+/* En móviles bajamos la barra de gestión un poco si no cabe */
+@media (max-width: 768px) {
+  .cabecera-pagina {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
 }
