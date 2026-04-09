@@ -1,14 +1,8 @@
-import { Component, inject} from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-
-interface Noticia {
-  id: number;
-  date: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-}
+import { Router } from '@angular/router'; // Para ir al formulario de creación
+import { NoticiasService } from '../../core/services/noticias';
+import { Noticia } from '../../core/models/noticia';
 
 @Component({
   selector: 'app-noticias',
@@ -17,52 +11,64 @@ interface Noticia {
   templateUrl: './noticias.html',
   styleUrl: './noticias.css',
 })
-
 export class Noticias {
+  private noticiasService = inject(NoticiasService);
+  private router = inject(Router);
 
-  noticias: Noticia[] = [
-    {
-      id: 1,
-      date: '10 de octubre de 2025',
-      title: 'Lorem ipsum dolor sit amet',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      imageUrl: 'https://es.wikipedia.org/wiki/Archivo:PlaceholderLC.png'
-    },
-    {
-      id: 2,
-      date: '15 de noviembre de 2026',
-      title: 'Consectetur adipiscing elit',
-      description: 'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      imageUrl: 'https://es.wikipedia.org/wiki/Archivo:PlaceholderLC.png'
-    },
-    {
-      id: 3,
-      date: '20 de diciembre de 2027',
-      title: 'Sed do eiusmod tempor',
-      description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      imageUrl: 'https://es.wikipedia.org/wiki/Archivo:PlaceholderLC.png'
-    }
-  ];
+  // Exponemos la lista ordenada automáticamente del servicio
+  noticias = this.noticiasService.noticiasOrdenadas;
+
+  // 👈 NUEVO SIGNAL: Simula el rol (false = Público, true = Delegado)
+  esDelegado = signal(false);
 
   index = 0;
-  private router = inject(Router);
   private touchStartX = 0;
   private touchEndX = 0;
 
   get starredNoticia() {
-    return this.noticias[this.index];
+    return this.noticias()[this.index];
   }
 
   nextNoticia() {
-    this.index = (this.index + 1) % this.noticias.length;
+    this.index = (this.index + 1) % this.noticias().length;
   }
 
   lastNoticia() {
-    this.index = (this.index - 1 + this.noticias.length) % this.noticias.length;
+    this.index = (this.index - 1 + this.noticias().length) % this.noticias().length;
   }
 
-  goToNoticia(id: number) {
-    this.router.navigate(['/noticia', id]);
+  // --- LÓGICA DE GESTIÓN (Solo Delegado) ---
+
+  // Cambiar el rol temporalmente (para el botón de arriba)
+  toggleRol() {
+    this.esDelegado.update(val => !val);
+  }
+
+  // Ir a la página de creación
+  irACrearNoticia() {
+    this.router.navigate(['/noticias/crear']);
+  }
+
+  // Ir a la página de edición (mismo formulario pero con ID)
+  irAEditarNoticia(id: number) {
+    this.router.navigate(['/noticias/editar', id]);
+  }
+
+  toggleFijar(id: number) {
+    this.noticiasService.togglePinNoticia(id);
+  }
+
+  borrarNoticia(noticia: Noticia) {
+    // CONFIRMACIÓN EXPLÍCITA
+    const confirmacion = confirm(`¿Estás TOTALMENTE seguro de que quieres borrar la noticia "${noticia.title}"? Esta acción no se puede deshacer.`);
+    
+    if (confirmacion) {
+      this.noticiasService.deleteNoticia(noticia.id);
+      // Si borramos la que estaba destacada en el carrusel, reseteamos el índice
+      if (this.index >= this.noticias().length) {
+        this.index = 0;
+      }
+    }
   }
   
   onTouchStart(event: TouchEvent) {

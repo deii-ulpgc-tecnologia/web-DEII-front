@@ -182,3 +182,80 @@
     width: 100%;
   }
 }
+
+
+/* ============================
+   ESTILOS DE GESTIÓN (ADMIN)
+   ============================ */
+   
+/* Barra de gestión superior */
+.barra-gestion {
+  display: flex;
+  justify-content: space-between; /* Interruptor izquierda, Crear derecha */
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px dashed #ccc;
+}
+
+/* Estilo especial para la tarjeta si está fijada */
+.tarjeta-noticia.noticia-fijada {
+  border: 2px solid var(--ulpgc-naranja); /* Borde naranja corporativo */
+  position: relative; /* Para el icono de pin */
+}
+
+/* Icono de pin visual */
+.pin-indicator {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background-color: var(--ulpgc-naranja);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 5;
+}
+.pin-indicator svg { width: 18px; height: 18px; }
+
+/* Contenedor de herramientas dentro de la tarjeta */
+.tarjeta-info {
+  /* ... tu código anterior ... */
+  position: relative; /* Para las herramientas de delegado */
+}
+
+.herramientas-delegado {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  background-color: white;
+  padding: 5px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  gap: 5px;
+  z-index: 10;
+}
+
+/* Estilo para los botones de icono de gestión */
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  color: var(--ulpgc-gris);
+  transition: all 0.2s;
+}
+.btn-icon:hover { background-color: #eee; color: var(--ulpgc-azul); }
+.btn-icon svg { width: 20px; height: 20px; }
+
+/* Botón de borrar en rojo al hover */
+.btn-icon.btn-borrar:hover {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
