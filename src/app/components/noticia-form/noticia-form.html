@@ -1,0 +1,64 @@
+<section class="contenedor-formulario">
+  <div class="cabecera-form">
+    <h1 class="titulo-principal">{{ isEditando() ? 'Editar Noticia' : 'Nueva Noticia' }}</h1>
+  </div>
+
+  <form [formGroup]="formularioNoticia" (ngSubmit)="guardarNoticia()">
+    
+    <div class="grupo-campo">
+      <label class="etiqueta-negra">Título</label>
+      <input type="text" formControlName="titulo" class="input-gris" 
+             [class.error-borde]="formularioNoticia.get('titulo')?.invalid && formularioNoticia.get('titulo')?.touched">
+    </div>
+
+    <div class="grupo-campo">
+      <label class="etiqueta-negra">Cuerpo</label>
+      <textarea formControlName="cuerpo" class="input-gris textarea-grande"
+                [class.error-borde]="formularioNoticia.get('cuerpo')?.invalid && formularioNoticia.get('cuerpo')?.touched"></textarea>
+    </div>
+
+    <div class="rejilla-imagenes">
+      
+      <div class="grupo-campo">
+        <label class="etiqueta-negra">Subida de imágenes</label>
+        <label class="caja-subida">
+          <input type="file" (change)="procesarArchivo($event, 'imagenesExtra')" accept="image/*" multiple class="input-oculto">
+
+          @if (formularioNoticia.get('imagenesExtra')?.value) {
+            <div class="previews-imagenes">
+              @for (img of formularioNoticia.get('imagenesExtra')?.value; track $index) {
+                <img [src]="img" class="img-preview">
+              }
+            </div>
+          } @else { 
+            <svg class="icono-flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 19V5M5 12l7-7 7 7"/>
+            </svg>
+          }
+        </label>
+      </div>
+
+      <div class="grupo-campo">
+        <label class="etiqueta-negra">Imagen de portada</label>
+        <label class="caja-subida">
+          <input type="file" (change)="procesarArchivo($event, 'imagenPortada')" accept="image/*" class="input-oculto">
+          
+          @if (formularioNoticia.get('imagenPortada')?.value) {
+            <img [src]="formularioNoticia.get('imagenPortada')?.value" class="img-preview">
+          } @else {
+              <svg class="icono-flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 19V5M5 12l7-7 7 7"/>
+              </svg>
+          }
+        </label>
+      </div>
+    </div>
+
+    <div class="acciones-form">
+      <button type="button" class="btn btn-gris" (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="btn btn-naranja" [disabled]="formularioNoticia.invalid">
+        {{ isEditando() ? 'Guardar Cambios' : 'Publicar Noticia' }}
+      </button>
+    </div>
+  </form>
+</section>
