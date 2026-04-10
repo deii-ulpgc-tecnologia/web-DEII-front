@@ -5,7 +5,7 @@ import { Noticias } from './components/noticias/noticias';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Noticias],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

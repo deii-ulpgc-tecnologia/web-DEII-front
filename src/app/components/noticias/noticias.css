@@ -165,7 +165,7 @@
     position: relative;
   }
   
-  /* 3. ¡Desaparecen las flechas en el móvil! */
+  /* Desaparecen las flechas en el móvil! */
   .btn-flecha {
     display: none; 
   }
@@ -182,7 +182,6 @@
     width: 100%;
   }
 }
-
 
 /* ============================
    ESTILOS DE DELEGADO
@@ -214,14 +213,14 @@
   top: 0;
   right: 0; /* Arriba a la derecha del texto */
   background-color: rgba(255, 255, 255, 0.9);
-  /* padding: 5px; */
+  padding: 5px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   display: flex;
   gap: 5px;
 }
 
-/* En la tarjeta inversa, ponemos los botones a la izquierda para que no tapen la imagen */
+/* En la tarjeta inversa, se ponen los botones a la izquierda para que no tapen la imagen */
 .tarjeta-noticia.reverso .herramientas-delegado {
   right: auto;
   left: 0;
@@ -250,7 +249,7 @@
   color: #d32f2f;
 }
 
-/* En móviles bajamos la barra de gestión un poco si no cabe */
+/* En móviles se baja la barra de gestión un poco si no cabe */
 @media (max-width: 768px) {
   .cabecera-pagina {
     flex-direction: column;
