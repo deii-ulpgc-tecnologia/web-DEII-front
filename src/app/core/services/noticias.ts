@@ -13,7 +13,7 @@ export class NoticiasService {
     { id: 3, date: '20 de dic 2027', title: 'Noticia Reciente', description: 'Sed do eiusmod...', imageUrl: '...', pinned: false }
   ]);
 
-  // Primero las fijadas (pinned), luego el resto (puedes añadir orden por fecha también).
+  // Primero las fijadas (pinned), luego el resto (se puede modificar para que vaya en orden por fecha también).
   noticiasOrdenadas = computed(() => {
     return this.noticiasState().sort((a, b) => {
       if (a.pinned === b.pinned) return 0; // Si ambos son iguales, no cambia

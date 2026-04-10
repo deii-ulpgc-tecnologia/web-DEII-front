@@ -17,9 +17,8 @@ export class Noticias {
 
   // Lista de noticias general (ordenada: fijadas primero)
   noticias = this.noticiasService.noticiasOrdenadas;
-
-  // NUEVO: El carrusel solo muestra las fijadas. 
-  // (Si no hay ninguna fijada, mostramos todas por defecto para que no quede en blanco).
+ 
+  // El carrusel solo muestra las fijadas (Si no hay ninguna fijada, se muestra todas).
   noticiasCarrusel = computed(() => {
     const fijadas = this.noticias().filter(n => n.pinned);
     return fijadas.length > 0 ? fijadas : this.noticias();
@@ -35,7 +34,7 @@ export class Noticias {
   // Devuelve la noticia actual del carrusel de forma segura
   get starredNoticia() {
     const carrusel = this.noticiasCarrusel();
-    // Previene errores si borramos la noticia que estábamos viendo
+    // Previene errores si borramos la noticia que se está previsualizando
     return carrusel[this.index % carrusel.length]; 
   }
 
@@ -65,7 +64,7 @@ export class Noticias {
 
   toggleFijar(id: number) {
     this.noticiasService.togglePinNoticia(id);
-    this.index = 0; // Volvemos a la primera del carrusel al fijar/desfijar
+    this.index = 0; // Se vuelve a la primera del carrusel al fijar/desfijar
   }
 
   borrarNoticia(noticia: Noticia) {

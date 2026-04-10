@@ -25,12 +25,12 @@ export class NoticiaFormComponent implements OnInit {
     imagenesExtra: ['']  // Para la subida de imágenes secundarias
   });
 
-  // Estados para saber si estamos creando o editando
+  // Estados para saber si se está creando o editando
   isEditando = signal(false);
   idEdicion = signal<number | null>(null);
 
   ngOnInit() {
-    // Comprobamos si en la URL nos pasaron un ID (modo edición)
+    // Se comprueba si en la URL nos pasaron un ID (modo edición)
     const idParam = this.route.snapshot.paramMap.get('id');
     if (idParam) {
       const id = +idParam;
@@ -39,7 +39,7 @@ export class NoticiaFormComponent implements OnInit {
       if (noticiaExistente) {
         this.isEditando.set(true);
         this.idEdicion.set(id);
-        // Rellenamos el formulario con los datos que ya existían
+        // Rellena el formulario con los datos que ya existían
         this.formularioNoticia.patchValue({
           titulo: noticiaExistente.title,
           cuerpo: noticiaExistente.description,
@@ -73,7 +73,7 @@ export class NoticiaFormComponent implements OnInit {
 
     const datos = this.formularioNoticia.value;
     
-    // Formateamos la fecha actual al estilo "10 de abril 2026"
+    // Formateamos la fecha actual al estilo "DD de mes YYYY"
     const opcionesFecha: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' };
     const fechaHoy = new Date().toLocaleDateString('es-ES', opcionesFecha);
 
@@ -81,12 +81,12 @@ export class NoticiaFormComponent implements OnInit {
       title: datos.titulo,
       description: datos.cuerpo,
       date: fechaHoy,
-      // Si no subió imagen, ponemos el placeholder por defecto
+      // Si no subió imagen, poner un placeholder por defecto
       imageUrl: datos.imagenPortada || 'https://via.placeholder.com/800x400/d9d9d9/545859?text=Sin+Imagen'
     };
 
     if (this.isEditando() && this.idEdicion() !== null) {
-      // Actualizamos pasando también el pinned actual para no perderlo
+      // Actualizar pasando también el pinned actual para no perderlo
       const pinnedActual = this.noticiasService.getNoticiaPorId(this.idEdicion()!)?.pinned || false;
       this.noticiasService.updateNoticia({
         id: this.idEdicion()!,
@@ -94,11 +94,11 @@ export class NoticiaFormComponent implements OnInit {
         pinned: pinnedActual
       });
     } else {
-      // Creamos nueva
+      // Crea una nueva noticia (si no es edición)
       this.noticiasService.addNoticia(noticiaProcesada);
     }
 
-    // Volvemos a la página principal
+    // Vuelta a la página principal de noticias después de guardar
     this.router.navigate(['/noticias']);
   }
 

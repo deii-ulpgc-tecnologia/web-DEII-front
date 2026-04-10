@@ -1,5 +1,5 @@
 .contenedor-formulario {
-  max-width: 1000px; /* Un poco más estrecho para facilitar la lectura */
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
   font-family: var(--font-ulpgc);
@@ -17,17 +17,18 @@
   flex-direction: column;
 }
 
-.etiqueta-negrita {
+.etiqueta-negra {
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: #000;
 }
 
-/* Estilos de las cajas grises replicando el diseño */
+/* Estilos de las cajas grises */
 .input-gris {
   background-color: #d9d9d9;
   border: none;
+  border-radius: 1px;
   padding: 1rem;
   font-family: var(--font-ulpgc);
   font-size: 1rem;
@@ -70,7 +71,7 @@
 
 .input-oculto {
   position: absolute;
-  left: -9999px; /* Ocultamos el botón feo por defecto del navegador */
+  left: -9999px; /* Oculta el botón por defecto del navegador */
 }
 
 .icono-flecha {

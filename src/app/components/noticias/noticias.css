@@ -1,4 +1,3 @@
-/* Contenedor principal */
 .contenedor-pagina {
   max-width: 1200px;
   margin: 0 auto;
@@ -93,14 +92,14 @@
 
 .tarjeta-noticia {
   display: flex;
-  background-color: #efefef; /* Fondo gris claro según el diseño */
+  background-color: #efefef;
   border-radius: var(--border-radius-md);
   padding: 1.5rem;
   gap: 2rem;
   align-items: center;
 }
 
-/* Efecto cebra para el fondo de las tarjetas */
+/* Intercalar los tonos de gris */
 .tarjeta-noticia:nth-child(even) {
   background-color: #e4e7e9;
 }
@@ -119,9 +118,9 @@
 .tarjeta-imagen {
   width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1; /* Cuadrado como en el diseño */
+  aspect-ratio: 1 / 1; /* Cuadrado (Esto depende del formato de imagen que se vaya a usar) */
   object-fit: cover;
-  border: 1px solid #ccc; /* Simula la cruz del placeholder */
+  border: 1px solid #ccc;
 }
 
 .tarjeta-info {
@@ -240,10 +239,16 @@
   transition: all 0.2s;
 }
 
-.btn-icon:hover { background-color: #eee; color: var(--ulpgc-azul); }
-.btn-icon svg { width: 22px; height: 22px; }
+.btn-icon:hover { 
+  background-color: #eee; 
+  color: var(--ulpgc-azul); 
+}
 
-/* El de borrar en rojo */
+.btn-icon svg { 
+  width: 22px; 
+  height: 22px; 
+}
+
 .btn-icon.btn-borrar:hover {
   background-color: #ffebee;
   color: #d32f2f;
