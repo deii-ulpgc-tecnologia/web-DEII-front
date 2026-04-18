@@ -1,0 +1,52 @@
+.custom-navbar {
+  background-color: #0066A1;
+  padding: 0.8rem 1.5rem;
+}
+
+.custom-brand {
+  color: white;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+.custom-brand:hover {
+  color: white;
+}
+
+.custom-link {
+  color: white;
+  margin-left: 1rem;
+  transition: 0.3s ease;
+}
+
+.custom-link:hover,
+.custom-link:focus,
+.custom-link.active {
+  color: white;
+  opacity: 0.8;
+}
+
+.login-btn {
+  background-color: #ff8c00;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #e67e00;
+  color: white;
+}
+
+.custom-toggler {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.custom-toggler .navbar-toggler-icon {
+  filter: invert(1);
+}
