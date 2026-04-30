@@ -1,1 +1,37 @@
-<p>documentos works!</p>
+<div class="container mt-4">
+
+  <h1>Documentos</h1>
+
+  <div class="card mb-3" *ngFor="let documento of documentos">
+
+    <div class="card-body">
+
+      <h5>{{ documento.nombre }}</h5>
+
+      <p>
+        {{ documento.asignatura }} -
+        {{ documento.curso }}
+      </p>
+
+      <p>{{ documento.tipo }}</p>
+
+      <a
+        [href]="documento.pdfUrl"
+        target="_blank"
+        class="btn btn-secondary"
+      >
+        Ver PDF
+      </a>
+
+      <button
+        class="btn btn-primary ms-2"
+        [routerLink]="['/documentos/editar', documento.id]"
+      >
+        Editar
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
