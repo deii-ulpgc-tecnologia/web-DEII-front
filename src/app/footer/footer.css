@@ -1,57 +1,68 @@
+/* Mantenemos tu footer principal */
 .custom-footer {
-  background-color: #0066A1;
+  background-color: var(--ulpgc-azul);
   color: white;
-  padding: 40px 20px;
-  font-family: Rubik, sans-serif;
+  padding: 20px 10px;
+  font-family: var(--font-ulpgc);
 }
 
 .footer-container {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 40px;
 }
 
 .footer-column {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
   min-width: 200px;
 }
 
+.footer-column:nth-child(1) {
+  flex: 1; 
+  margin-right: auto;
+}
+
+
+.footer-column:nth-child(2),
+.footer-column:nth-child(3) {
+  flex: 0 1 auto; 
+}
+
 .footer-column h3 {
-  font-size: 1rem;
-  margin-bottom: 15px;
-  font-weight: normal;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .footer-column p {
-  margin-bottom: 15px;
   font-size: 0.9rem;
 }
 
-
 .placeholder-img {
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 150px;
-  height: 150px;
+  width: 110px;
+  height: 110px;
   background: transparent;
   border: none;
+  object-fit: contain;
+  margin: auto 0;
+  justify-content: center;
 }
 
-
 .custom-link {
-  list-style: none;
-  padding: 2px;
+  color: white;
+  text-decoration: none;
+  padding: 2px 0;
   margin: 0;
+  transition: opacity 0.3s ease;
 }
 
 .custom-link:hover,
 .custom-link:focus,
 .custom-link.active {
   color: white;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .email-link {
@@ -64,10 +75,9 @@
   text-decoration: underline;
 }
 
-.social-icons{
+.social-icons {
   display: flex;
   gap: 15px;
-  margin-bottom: 20px;
 }
 
 .social-link {
@@ -83,12 +93,12 @@
 }
 
 .footer-btn {
-  background: #e67e00;
+  background: var(--ulpgc-naranja);
   color: white;
   border: none;
   border-radius: 4px;
   padding: 10px 24px;
-  margin-top: 20px;
+  margin-top: 15px;
   font-size: 0.95rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -100,15 +110,24 @@
 }
 
 .footer-btn:hover {
-  opacity: 0.8;
+  background-color: #e69100; /* Feedback visual */
 }
 
+/* MODO MÓVIL: Apilamos todo al centro */
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
+  
+  /* Reseteamos el comportamiento de la primera columna para móvil */
+  .footer-column:nth-child(1) {
+    flex: auto;
+    margin-right: 0;
+    align-items: center; /* Centramos el logo */
+  }
+
   .social-icons {
     justify-content: center;
   }

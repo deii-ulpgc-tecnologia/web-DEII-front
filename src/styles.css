@@ -86,3 +86,25 @@ h1, h2, h3, h4, h5, h6 {
 .btn-icon:hover { 
     background-color: rgba(0,0,0,0.05); 
 }
+
+/* =========================================
+   ESTILOS DE ESTRUCTURA (FOOTER FIJO ABAJO)
+   ========================================= */
+
+/* Aseguramos que el html y body ocupen toda la pantalla sin márgenes por defecto */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Convertimos la raíz de Angular en un contenedor flex vertical */
+app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Le decimos al contenido principal que ocupe todo el espacio sobrante */
+.contenido-principal {
+    flex: 1 0 auto; 
+}

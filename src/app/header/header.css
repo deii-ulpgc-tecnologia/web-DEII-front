@@ -50,3 +50,37 @@
 .custom-toggler .navbar-toggler-icon {
   filter: invert(1);
 }
+
+/* Contenedor del enlace para posicionar la burbuja */
+.nav-item-solicitudes {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item-solicitudes .custom-link {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Separación entre la palabra "Solicitudes" y el número */
+}
+
+/* El punto rojo de notificaciones */
+.badge-notificacion {
+  background-color: #d32f2f; /* Rojo alerta */
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  min-width: 20px;
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  /* Animación de entrada */
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}

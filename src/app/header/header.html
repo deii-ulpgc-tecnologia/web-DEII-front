@@ -7,13 +7,25 @@
         <img src="assets/logo.png" alt="Logo" width="40" height="40">
       </a>
 
-      <div class="navbar-nav">
+      <div class="navbar-nav align-items-center">
         <a class="nav-link custom-link active" href="#">Inicio</a>
         <a class="nav-link custom-link" href="#">Estudios</a>
         <a class="nav-link custom-link" href="#">Documentacion</a>
+        
+        <!-- Solicitudes con Burbuja Reactiva -->
+        <div class="nav-item-solicitudes">
+          <a class="nav-link custom-link" routerLink="/docs-review">
+            Solicitudes
+            @if (pendientes() > 0) {
+              <span class="badge-notificacion">{{ pendientes() }}</span>
+            }
+          </a>
+        </div>
+
       </div>
     </div>
 
+    <!-- DERECHA -->
     <div class="ms-auto">
       <a class="btn login-btn" href="#">Iniciar sesión</a>
     </div>
