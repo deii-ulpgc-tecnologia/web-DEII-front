@@ -59,7 +59,7 @@ h1 {
 }
 
 .tabla-solicitudes tr:nth-child(even) {
-  background-color: #fafafa;
+  background-color: #f3f3f3;
 }
 
 .descripcion-celda {
@@ -99,11 +99,39 @@ h1 {
   gap: 0.5rem;
 }
 
-.btn-aprobar { background-color: #2e7d32; color: white; }
-.btn-aprobar:hover { background-color: #1b5e20; }
+.btn-aprobar { 
+  background-color: var(--ulpgc-azul);
+  color: white; 
+}
 
-.btn-rechazar { background-color: #c62828; color: white; }
-.btn-rechazar:hover { background-color: #b71c1c; }
+.btn-aprobar:hover {
+   background-color: #1363c4; 
+}
 
-.text-center { text-align: center; }
-.empty-state { padding: 3rem; color: var(--ulpgc-gris); font-style: italic; }
+.btn-rechazar { 
+  background-color: #c62828; 
+  color: white; 
+}
+
+.btn-rechazar:hover { 
+  background-color: #b71c1c; 
+}
+
+.btn-gris { 
+  background-color: #939393; 
+  color: white; 
+}
+
+.btn-gris:hover { 
+  background-color:var(--ulpgc-gris); 
+}
+
+.text-center { 
+  text-align: center; 
+}
+
+.empty-state { 
+  padding: 3rem; 
+  color: var(--ulpgc-gris); 
+  font-style: var(--font-ulpgc); 
+}

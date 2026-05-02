@@ -20,6 +20,13 @@
         @for (a of asignaturas; track a) { <option [value]="a">{{ a }}</option> }
       </select>
     </div>
+        <div class="filtro-grupo">
+      <label class="titulo-gris">Estado</label>
+      <select [(ngModel)]="filtroEstado" class="input-filtro">
+        <option value="">Todos</option>
+        @for (e of estado; track e) { <option [value]="e">{{ e }}</option> }
+      </select>
+    </div>
   </div>
 
   <!-- Tabla de Solicitudes -->
@@ -56,7 +63,7 @@
             <td class="acciones-celda">
               <button class="btn btn-aprobar" (click)="gestionarSolicitud(solicitud.id, 'Aprobado')">Aprobar</button>
               <button class="btn btn-rechazar" (click)="gestionarSolicitud(solicitud.id, 'Rechazado')">Rechazar</button>
-              <button class="btn btn-azul" (click)="verDetalles(solicitud.id)">Ver Detalles</button>
+              <button class="btn btn-gris" (click)="verDetalles(solicitud.id)">Ver Detalles</button>
             </td>
           </tr>
         } @empty {

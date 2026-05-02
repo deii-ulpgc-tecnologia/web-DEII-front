@@ -17,22 +17,26 @@ export class DocsReviewComponent {
   filtroTexto = signal('');
   filtroGrado = signal('');
   filtroAsignatura = signal('');
+  filtroEstado = signal('');
 
   // Listas para los selects
   grados = ['GII', 'GCID', 'GFM'];
   asignaturas = ['AyG', 'BD1', 'FFI'];
+  estado = ['Pendiente', 'Aprobado', 'Rechazado'];
 
   // Lista filtrada computada
   solicitudesMostradas = computed(() => {
     const texto = this.filtroTexto().toLowerCase();
     const grado = this.filtroGrado();
     const asig = this.filtroAsignatura();
+    const est = this.filtroEstado();
 
     return this.solicitudesService.solicitudes().filter(s => {
       const coincideTexto = s.correo.toLowerCase().includes(texto) || s.id.includes(texto);
       const coincideGrado = grado ? s.grado === grado : true;
       const coincideAsig = asig ? s.asignatura === asig : true;
-      return coincideTexto && coincideGrado && coincideAsig && s.estado === 'Pendiente';
+      const coincideEstado = est ? s.estado === est : true;
+      return coincideTexto && coincideGrado && coincideAsig && coincideEstado && s.estado === 'Pendiente';
     });
   });
 
