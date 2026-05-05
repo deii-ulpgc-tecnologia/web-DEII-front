@@ -1,3 +1,28 @@
 main {
   padding: 0.5rem 1rem;
 }
+
+.years {
+  display: flex;
+  gap: 1rem;
+}
+
+.year {
+  width: 100%;
+}
+
+a {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+a:hover {
+  transform: scale(1.05);
+}
+
+a:active {
+  transform: scale(0.95);
+}
