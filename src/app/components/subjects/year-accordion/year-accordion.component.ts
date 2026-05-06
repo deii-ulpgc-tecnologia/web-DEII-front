@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { Degree, ordinals, Subject } from '../../../core/models/subject';
 import { SemesterAccordion } from '../semester-accordion/semester-accordion';
 
@@ -10,6 +10,7 @@ import { SemesterAccordion } from '../semester-accordion/semester-accordion';
 })
 export class YearAccordion {
   @Input() degree?: Degree;
-  @Input() subjects: Subject[] = [];
+  @Input() subjects = signal<Subject[]>([]);
+
   protected readonly ordinals = ordinals;
 }

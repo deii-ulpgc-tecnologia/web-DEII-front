@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Subject, Degree } from '../../../core/models/subject';
 import { YearAccordion } from '../year-accordion/year-accordion.component';
 
@@ -9,10 +9,11 @@ import { YearAccordion } from '../year-accordion/year-accordion.component';
   styleUrl: './subject-select.component.css',
 })
 export class SubjectSelectComponent {
-  subjects: Subject[] = [];
+  subjects = signal<Subject[]>([]);
 
   ngOnInit() {
-    this.subjects = this.loadSubjects()
+    const data = this.loadSubjects()
+    this.subjects.set(data);
   }
   protected loadSubjects(): Subject[] {
     // TODO

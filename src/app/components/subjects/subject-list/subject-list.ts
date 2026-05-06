@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { Subject } from '../../../core/models/subject';
 
 @Component({
@@ -8,5 +8,5 @@ import { Subject } from '../../../core/models/subject';
   styleUrl: './subject-list.css',
 })
 export class SubjectList {
-  @Input() subjects: Subject[] = [];
+  @Input() subjects = signal<Subject[]>([]);
 }

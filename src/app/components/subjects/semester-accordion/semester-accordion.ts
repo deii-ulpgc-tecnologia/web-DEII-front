@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { Degree, ordinals, Subject } from '../../../core/models/subject';
 import { SubjectList } from '../subject-list/subject-list';
 
@@ -11,6 +11,6 @@ import { SubjectList } from '../subject-list/subject-list';
 export class SemesterAccordion {
   @Input() degree?: Degree;
   @Input() year?: number;
-  @Input() subjects: Subject[] = [];
+  @Input() subjects = signal<Subject[]>([]);
   protected readonly ordinals = ordinals;
 }
