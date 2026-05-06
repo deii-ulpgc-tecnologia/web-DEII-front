@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Subject, Degree } from '../../../core/models/subject';
-import { DegreeAccordion } from '../degree-accordion/degree-accordion';
+import { YearAccordion } from '../year-accordion/year-accordion.component';
 
 @Component({
   selector: 'app-subject-select',
-  imports: [DegreeAccordion],
+  imports: [YearAccordion],
   templateUrl: './subject-select.component.html',
   styleUrl: './subject-select.component.css',
 })

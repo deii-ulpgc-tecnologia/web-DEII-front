@@ -1,0 +1,20 @@
+<div class="accordion">
+  @for (semester of [1, 2]; track semester) {
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#' + degree + '-' + year + '-' + semester"
+                aria-expanded="false"
+                [attr.aria-controls]="degree + '-' + year + '-' + semester">
+          {{ordinals[semester]}} cuatrimestre
+        </button>
+      </h2>
+      <div [id]="degree + '-' + year + '-' + semester" class="accordion-collapse collapse">
+        <div class="accordion-body">
+          Hola xd.
+        </div>
+      </div>
+    </div>
+  }
+</div>

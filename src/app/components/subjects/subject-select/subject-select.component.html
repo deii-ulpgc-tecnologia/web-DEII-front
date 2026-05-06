@@ -1,4 +1,3 @@
-
 <main>
   <h1 class="text-center">Selección de asignatura</h1>
 
@@ -15,8 +14,8 @@
         </button>
       </h2>
       <div id="gii" class="accordion-collapse collapse">
-        <div class="accordion-body years">
-            <app-degree-accordion [degree]="Degree.Informatica"/>
+        <div class="accordion-body">
+            <app-year-accordion [degree]="Degree.Informatica"/>
         </div>
       </div>
     </article>
@@ -33,8 +32,8 @@
         </button>
       </h2>
       <div id="gcid" class="accordion-collapse collapse">
-        <div class="accordion-body years">
-          <app-degree-accordion [degree]="Degree.Datos"/>
+        <div class="accordion-body">
+          <app-year-accordion [degree]="Degree.Datos"/>
         </div>
       </div>
     </article>
@@ -52,7 +51,7 @@
       </h2>
       <div id="gifm" class="accordion-collapse collapse">
         <div class="accordion-body">
-          <app-degree-accordion [degree]="Degree.FyM"/>
+          <app-year-accordion [degree]="Degree.FyM"/>
         </div>
       </div>
     </article>

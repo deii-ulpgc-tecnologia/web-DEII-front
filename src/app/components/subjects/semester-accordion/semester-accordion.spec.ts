@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DegreeAccordion } from './degree-accordion';
+import { SemesterAccordion } from './semester-accordion';
 
-describe('DegreeAccordion', () => {
-  let component: DegreeAccordion;
-  let fixture: ComponentFixture<DegreeAccordion>;
+describe('SemesterAccordion', () => {
+  let component: SemesterAccordion;
+  let fixture: ComponentFixture<SemesterAccordion>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DegreeAccordion],
+      imports: [SemesterAccordion],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DegreeAccordion);
+    fixture = TestBed.createComponent(SemesterAccordion);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
