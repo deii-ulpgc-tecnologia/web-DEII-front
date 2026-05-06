@@ -11,9 +11,12 @@ import { YearAccordion } from '../year-accordion/year-accordion.component';
 export class SubjectSelectComponent {
   subjects: Subject[] = [];
 
-  protected getSubjects(degree: Degree, year: number): Subject[] {
+  ngOnInit() {
+    this.subjects = this.loadSubjects()
+  }
+  protected loadSubjects(): Subject[] {
     // TODO
-    return this.subjects;
+    return [];
   }
 
   protected readonly Degree = Degree;

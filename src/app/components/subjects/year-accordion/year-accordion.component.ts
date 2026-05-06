@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Degree, ordinals } from '../../../core/models/subject';
+import { Degree, ordinals, Subject } from '../../../core/models/subject';
 import { SemesterAccordion } from '../semester-accordion/semester-accordion';
 
 @Component({
@@ -10,5 +10,6 @@ import { SemesterAccordion } from '../semester-accordion/semester-accordion';
 })
 export class YearAccordion {
   @Input() degree?: Degree;
+  @Input() subjects: Subject[] = [];
   protected readonly ordinals = ordinals;
 }
