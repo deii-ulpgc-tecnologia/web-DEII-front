@@ -1,0 +1,9 @@
+<ul class="list-group list-group-flush">
+  @if (subjects.length > 0) {
+    @for (subject of subjects; track subject.id) {
+      <li class="list-group-item">{{subject.name}}</li>
+    }
+  } @else {
+    <li class="list-group-item">Contenido pendiente</li>
+  }
+</ul>
