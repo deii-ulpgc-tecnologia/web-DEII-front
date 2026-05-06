@@ -16,16 +16,7 @@
       </h2>
       <div id="gii" class="accordion-collapse collapse">
         <div class="accordion-body years">
-            @for (year of years | keyvalue; track year.key) {
-              <div class="year">
-                <h4>{{year.value}} año</h4>
-                <ul class="list-group">
-                  @for (subject of getSubjects(Degree.Informatica, 1); track subject.name) {
-                    <li class="list-group-item"> <a class="hoverable">{{ subject.name }}</a> </li>
-                  }
-                </ul>
-              </div>
-            }
+            <app-degree-accordion [degree]="Degree.Informatica"/>
         </div>
       </div>
     </article>
@@ -43,16 +34,7 @@
       </h2>
       <div id="gcid" class="accordion-collapse collapse">
         <div class="accordion-body years">
-          @for (year of years | keyvalue; track year.key) {
-            <div class="year">
-              <h4>{{year.value}} año</h4>
-              <ul class="list-group">
-                @for (subject of getSubjects(Degree.Datos, 1); track subject.name) {
-                  <li class="list-group-item"> <a class="hoverable">{{ subject.name }}</a> </li>
-                }
-              </ul>
-            </div>
-          }
+          <app-degree-accordion [degree]="Degree.Datos"/>
         </div>
       </div>
     </article>
@@ -69,17 +51,8 @@
         </button>
       </h2>
       <div id="gifm" class="accordion-collapse collapse">
-        <div class="accordion-body years">
-          @for (year of years | keyvalue; track year.key) {
-            <div class="year">
-              <h4>{{year.value}} año</h4>
-              <ul class="list-group">
-                @for (subject of getSubjects(Degree.FyM, 1); track subject.name) {
-                  <li class="list-group-item"> <a class="hoverable">{{ subject.name }}</a> </li>
-                }
-              </ul>
-            </div>
-          }
+        <div class="accordion-body">
+          <app-degree-accordion [degree]="Degree.FyM"/>
         </div>
       </div>
     </article>

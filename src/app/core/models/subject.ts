@@ -1,9 +1,13 @@
 export enum Degree {
-  Informatica="gii", Datos="gcid", FyM="fym"
+  Informatica="ii", Datos="cid", FyM="ifm"
+}
+
+enum Year {
+  First=1, Second=2, Third=3, Fourth=4
 }
 
 export enum Semester {
-  First, Second
+  First=1, Second=2
 }
 
 export interface Subject {
