@@ -9,16 +9,5 @@ import { YearAccordion } from '../year-accordion/year-accordion.component';
   styleUrl: './subject-select.component.css',
 })
 export class SubjectSelectComponent {
-  subjects = signal<Subject[]>([]);
-
-  ngOnInit() {
-    const data = this.loadSubjects()
-    this.subjects.set(data);
-  }
-  protected loadSubjects(): Subject[] {
-    // TODO
-    return [];
-  }
-
   protected readonly Degree = Degree;
 }

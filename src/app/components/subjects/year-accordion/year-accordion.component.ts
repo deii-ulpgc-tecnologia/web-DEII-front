@@ -10,7 +10,5 @@ import { SemesterAccordion } from '../semester-accordion/semester-accordion';
 })
 export class YearAccordion {
   @Input() degree?: Degree;
-  @Input() subjects = signal<Subject[]>([]);
-
   protected readonly ordinals = ordinals;
 }

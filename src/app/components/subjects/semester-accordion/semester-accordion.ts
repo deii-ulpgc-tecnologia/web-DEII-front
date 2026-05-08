@@ -11,6 +11,28 @@ import { SubjectList } from '../subject-list/subject-list';
 export class SemesterAccordion {
   @Input() degree?: Degree;
   @Input() year?: number;
-  @Input() subjects = signal<Subject[]>([]);
+  subjects = signal<Subject[]>([
+    {
+      name: 'Métodos de Negros',
+      degree: Degree.Informatica,
+      year: 2,
+      semester: 2,
+      area: '',
+    },
+    {
+      name: 'Métodos de Negros 2',
+      degree: Degree.Informatica,
+      year: 2,
+      semester: 2,
+      area: '',
+    },
+    {
+      name: 'Métodos de Negros 3',
+      degree: Degree.Informatica,
+      year: 2,
+      semester: 2,
+      area: '',
+    },
+  ]);
   protected readonly ordinals = ordinals;
 }
