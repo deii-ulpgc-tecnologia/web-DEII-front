@@ -36,4 +36,16 @@
     </article>
   </section>
 
+  <section class = "seccion-recursos">
+    <h2 class="seccion-title">Apuntes</h2>
+    <article class="cuadri-archives">
+      @for (archivo of apuntes; track archivo.nombre) {
+        <a [href]="archivo.url" class = "enlace-archivo">
+          <span class = "separador"></span>
+          {{ archivo.nombre}}
+        </a>
+      }
+    </article>
+  </section>
+
 </main>

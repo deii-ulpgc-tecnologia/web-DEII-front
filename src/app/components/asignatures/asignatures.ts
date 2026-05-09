@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-asignatures',
   standalone: true,
@@ -10,9 +11,9 @@ import { CommonModule } from '@angular/common';
 })
 export class Asignatures {
   teoria = [
-    { nombre: 'Apuntes1', url: '#' },
-    { nombre: 'Apuntes2', url: '#' },
-    { nombre: 'Apuntes3', url: '#' }
+    { nombre: 'Teoria1', url: '#' },
+    { nombre: 'Teoria2', url: '#' },
+    { nombre: 'Teoria3', url: '#' }
   ];
 
   practicas = [
@@ -24,4 +25,10 @@ export class Asignatures {
     { nombre: 'Libro1', url: '#' },
     { nombre: 'Libro2', url: '#' }
   ];
+
+  apuntes = [
+    {nombre: 'Apuntes1', url: '#' },
+    {nombre: 'Apuntes2', url: '#' }
+  ];
+
 }
