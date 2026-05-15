@@ -1,0 +1,16 @@
+a {
+  font-weight: bold;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  transform: scale(1.05);
+}
+
+a:active {
+  transform: scale(0.95);
+}
