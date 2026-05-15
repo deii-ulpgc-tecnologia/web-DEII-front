@@ -75,3 +75,27 @@
     </table>
   </div>
 </section>
+@if (mostrarModal()) {
+  <div class="modal-overlay" (click)="cerrarModal()">
+    
+    <div class="modal-container" (click)="$event.stopPropagation()">
+      <h2 class="modal-titulo">Confirmar acción</h2>
+      
+      <p class="modal-texto">
+        ¿Estás seguro de que quieres marcar la solicitud <strong>{{ solicitudSeleccionada() }}</strong> como <strong>{{ accionSeleccionada() }}</strong>?
+      </p>
+
+      <div class="modal-botones">
+        <button class="btn btn-gris" (click)="cerrarModal()">Cancelar</button>
+        
+        <button class="btn" 
+                [class.btn-aprobar]="accionSeleccionada() === 'Aprobado'"
+                [class.btn-rechazar]="accionSeleccionada() === 'Rechazado'"
+                (click)="confirmarAccion()">
+          Sí, {{ accionSeleccionada() }}
+        </button>
+      </div>
+    </div>
+    
+  </div>
+}

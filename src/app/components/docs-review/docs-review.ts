@@ -24,6 +24,11 @@ export class DocsReviewComponent {
   asignaturas = ['AyG', 'BD1', 'FFI'];
   estado = ['Pendiente', 'Aprobado', 'Rechazado'];
 
+  // --- VARIABLES PARA EL MODAL DE CONFIRMACIÓN ---
+  mostrarModal = signal(false);
+  solicitudSeleccionada = signal('');
+  accionSeleccionada = signal<'Aprobado' | 'Rechazado'>('Aprobado');
+
   // Lista filtrada computada
   solicitudesMostradas = computed(() => {
     const texto = this.filtroTexto().toLowerCase();
@@ -41,11 +46,21 @@ export class DocsReviewComponent {
   });
 
   gestionarSolicitud(id: string, accion: 'Aprobado' | 'Rechazado') {
-    this.solicitudesService.actualizarEstado(id, accion);
+    this.solicitudSeleccionada.set(id);
+    this.accionSeleccionada.set(accion);
+    this.mostrarModal.set(true);
+  }
+
+  confirmarAccion() {
+    this.solicitudesService.actualizarEstado(this.solicitudSeleccionada(), this.accionSeleccionada());
+    this.cerrarModal();
+  }
+
+  cerrarModal() {
+    this.mostrarModal.set(false);
   }
 
   verDetalles(id: string) {
     console.log('Abriendo modal/vista de detalles para:', id);
-    // Lógica para abrir un modal
   }
 }

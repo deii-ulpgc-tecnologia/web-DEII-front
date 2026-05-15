@@ -6,7 +6,7 @@
 .custom-brand {
   color: white;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 2rem;
   text-decoration: none;
 }
 
@@ -14,17 +14,20 @@
   color: white;
 }
 
+
 .custom-link {
   color: white;
   margin-left: 1rem;
+  border-radius: 32px;
   transition: 0.3s ease;
+  font-size: 1.2rem;
 }
 
 .custom-link:hover,
 .custom-link:focus,
 .custom-link.active {
   color: white;
-  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .login-btn {
@@ -51,7 +54,6 @@
   filter: invert(1);
 }
 
-/* Contenedor del enlace para posicionar la burbuja */
 .nav-item-solicitudes {
   position: relative;
   display: flex;
@@ -61,12 +63,11 @@
 .nav-item-solicitudes .custom-link {
   display: flex;
   align-items: center;
-  gap: 8px; /* Separación entre la palabra "Solicitudes" y el número */
+  gap: 8px;
 }
 
-/* El punto rojo de notificaciones */
 .badge-notificacion {
-  background-color: #d32f2f; /* Rojo alerta */
+  background-color: #d32f2f;
   color: white;
   font-size: 0.75rem;
   font-weight: bold;
@@ -76,7 +77,6 @@
   text-align: center;
   line-height: 1.2;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  /* Animación de entrada */
   animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
