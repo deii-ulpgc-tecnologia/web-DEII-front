@@ -1,14 +1,14 @@
 .principal-container {
   max-width: 900px;
-  margin: 0 auto;
-  padding: 60px 20px;
+  padding: 100px 50px; 
   font-family: Rubik, sans-serif;
+  margin-top: 1rem;
 }
 
 .asignature-title {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 60px;
+  margin-bottom: 4rem; 
   color: #000;
 }
 
@@ -24,10 +24,9 @@
 
 .cuadri-archives {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   row-gap: 20px;
   column-gap: 40px;
-  padding-left: 30px;
 }
 
 .enlace-archivo {

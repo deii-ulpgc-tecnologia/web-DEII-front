@@ -5,7 +5,8 @@
 }
 
 h1 {
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2.3rem;
 }
 
 /* Filtros */
@@ -34,6 +35,7 @@ h1 {
 /* Tabla */
 .tabla-responsive {
   overflow-x: auto;
+  margin-bottom: 30px;
 }
 
 .tabla-solicitudes {
