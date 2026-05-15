@@ -1,0 +1,60 @@
+<div class = "doc-wrapper">
+  <div class = "doc-container">
+
+    <section class = "drop-placeholder">
+      <article class = "upload-icon">⬆️</article>
+      <p>(Área de subida en construcción)</p>
+    </section>
+
+    <select
+      #gradeSelect
+      [value] = "selectedGrade"
+      (change) = "onGradeChange(gradeSelect.value)"
+      class = "custom-input">
+      <option value = "" disabled>Grado</option>
+      <option value = "GII">GII</option>
+      <option value = "GCID">GCID</option>
+      <option value = "GFM">GFM</option>
+    </select>
+
+    <select
+      #asignatureSelect
+      [value] = "selectedAsignature"
+      (change) = "onAsignatureChange($event)"
+      [disabled] = "!selectedGrade"
+      class = "custom-input">
+      <option value = "" disabled>
+        {{selectedGrade ? 'Asignatura' : 'Elige un Grado primero'}}
+      </option>
+      @for (asig of asignaturesAvaible; track asig) {
+        <option [value] = "asig">
+          {{asig}}
+        </option>
+      }
+    </select>
+
+    <input
+      type = "text"
+      [value] = "emailProv"
+      (input) = "onEmail($event)"
+      (blur) = "onEmailBlur()"
+      class = "custom-input"
+      [class.error-border] = "emailError"
+      placeholder = "Correo institucional">
+
+    @if (emailError) {
+      <span class = "error-message">Debes usar el correo institucional</span>
+    }
+
+    <textarea
+      [value] = "descriptionProv"
+      (input) = "onDescriptionChange($event)"
+      class = "custom-input"
+      placeholder = "Sobre que trata el documento"></textarea>
+
+    <section class = "custom-input">
+      (CORREO DE LA DEII)
+    </section>
+
+  </div>
+</div>
