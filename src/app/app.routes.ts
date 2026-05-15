@@ -5,6 +5,7 @@ import { SubjectSelectComponent } from './components/subjects/subject-select/sub
 
 export const routes: Routes = [
   { path: 'noticias', component: Noticias },
+  { path: 'asignatura', component: Asignatures },
   { path: 'noticias/crear', component: NoticiaFormComponent }, // Ruta para crear
   { path: 'noticias/editar/:id', component: NoticiaFormComponent }, // Ruta para editar
   { path: 'asignaturas', component: SubjectSelectComponent },
