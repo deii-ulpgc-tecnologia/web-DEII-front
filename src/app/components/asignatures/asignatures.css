@@ -1,0 +1,53 @@
+.principal-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  font-family: Rubik, sans-serif;
+}
+
+.asignature-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: #000;
+}
+
+.seccion-recursos {
+  margin-bottom: 50px;
+}
+
+.seccion-title {
+  color: #005a9e;
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+.cuadri-archives {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  row-gap: 20px;
+  column-gap: 40px;
+  padding-left: 30px;
+}
+
+.enlace-archivo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.enlace-archivo:hover {
+  text-decoration: underline;
+  color: #005a9e;
+}
+
+.separador {
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background-color: #f39c12;
+  margin-right: 12px;
+}
