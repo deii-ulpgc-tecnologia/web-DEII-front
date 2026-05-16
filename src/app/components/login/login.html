@@ -1,0 +1,34 @@
+<div class="container mt-5" style="max-width: 420px;">
+  <h1>Iniciar sesión</h1>
+
+  @if (error()) {
+    <div class="alert alert-danger">
+      {{ error() }}
+    </div>
+  }
+
+  <div class="mb-3">
+    <label class="form-label">Usuario</label>
+    <input
+      class="form-control"
+      type="text"
+      [ngModel]="username()"
+      (ngModelChange)="username.set($event)"
+    >
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Contraseña</label>
+    <input
+      class="form-control"
+      type="password"
+      [ngModel]="password()"
+      (ngModelChange)="password.set($event)"
+      (keydown.enter)="iniciarSesion()"
+    >
+  </div>
+
+  <button class="btn btn-primary w-100" (click)="iniciarSesion()">
+    Entrar
+  </button>
+</div>
