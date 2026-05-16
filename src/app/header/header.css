@@ -14,20 +14,39 @@
   color: white;
 }
 
-
 .custom-link {
+  position: relative;
   color: white;
   margin-left: 1rem;
-  border-radius: 32px;
-  transition: 0.3s ease;
   font-size: 1.2rem;
+  border-radius: 0;
+  transition: color 0.2s ease;
 }
 
 .custom-link:hover,
 .custom-link:focus,
 .custom-link.active {
   color: white;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.custom-link::after {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0.2rem;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.custom-link:hover::after,
+.custom-link.active::after {
+  transform: scaleX(1);
 }
 
 .login-btn {
@@ -72,7 +91,7 @@
   font-size: 0.75rem;
   font-weight: bold;
   padding: 2px 6px;
-  border-radius: 50%;
+  border-radius: 999px;
   min-width: 20px;
   text-align: center;
   line-height: 1.2;
@@ -80,7 +99,34 @@
   animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* Responsive */
+@media (max-width: 991px) {
+  .custom-link {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .custom-link::after {
+    left: 0;
+    right: auto;
+    width: 40px;
+  }
+
+  .nav-item-solicitudes {
+    align-items: flex-start;
+  }
+
+  .login-btn {
+    width: fit-content;
+  }
+}
+
 @keyframes popIn {
-  0% { transform: scale(0); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
