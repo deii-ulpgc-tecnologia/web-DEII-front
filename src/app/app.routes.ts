@@ -4,6 +4,7 @@ import { NoticiaFormComponent } from './components/noticia-form/noticia-form';
 import { SubjectSelectComponent } from './components/subjects/subject-select/subject-select.component';
 import { Asignatures } from './components/asignatures/asignatures';
 import { DocsReviewComponent } from './components/docs-review/docs-review';
+import { DocumentoForm } from './components/documento-form/documento-form';
 
 export const routes: Routes = [
   { path: 'noticias', component: Noticias },
@@ -12,5 +13,6 @@ export const routes: Routes = [
   { path: 'noticias/editar/:id', component: NoticiaFormComponent }, // Ruta para editar
   { path: 'asignaturas', component: SubjectSelectComponent },
   { path: 'docs-review', component: DocsReviewComponent },
-  { path: '', redirectTo: 'noticias', pathMatch: 'full' }
+  { path: '', redirectTo: 'noticias', pathMatch: 'full' },
+  { path: 'documentos/editar/:id', component: DocumentoForm}
 ];
