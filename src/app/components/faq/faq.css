@@ -1,0 +1,235 @@
+.faq-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: var(--font-ulpgc);
+}
+
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin-top: 1rem;
+  margin-bottom: 2.3rem;
+}
+
+.search-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 50%;
+  min-width: 300px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--ulpgc-gris);
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  border: 1px solid var(--ulpgc-gris);
+  border-radius: 4px;
+  background-color: #d9d9d9;
+  font-size: 1rem;
+  font-family: var(--font-ulpgc);
+  outline: none;
+}
+
+.separator {
+  margin: 30px 0;
+  border-top: 2px solid var(--ulpgc-naranja);
+}
+
+.category-block {
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.category-header {
+  background-color: #d9d9d9;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.category-header.active {
+  border: 2px solid var(--ulpgc-azul);
+}
+
+.category-header:hover {
+  background-color: #d9d9d9;
+}
+
+.cuadri-archives {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  row-gap: 20px;
+  column-gap: 40px;
+  padding: 20px;
+  background-color: #fff; /* Opcional: fondo blanco para que resalte dentro del acordeón */
+}
+
+.icon-btn-naranja {
+  background-color: var(--ulpgc-naranja);
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.questions-list {
+  padding: 10px 0 10px 20px;
+}
+
+.question-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-bottom: none; 
+  padding: 0;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.question-header:hover .titulo-gris {
+  color: var(--ulpgc-naranja);
+}
+
+.badge-hidden {
+  font-size: 0.8rem;
+  background-color: #dc3545;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.hidden-text {
+  opacity: 0.6;
+}
+
+.delegate-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.text-danger {
+  color: red;
+}
+
+.answer-body {
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+  border-left: 3px solid var(--ulpgc-azul);
+  margin-top: 10px;
+  font-family: var(--font-ulpgc);
+  color: var(--ulpgc-gris);
+}
+
+.contact-section {
+  margin-top: 50px;
+  max-width: 1600px;
+  margin-bottom: 20px;
+}
+
+.contact-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background-color: #d9d9d9;
+  font-family: var(--font-ulpgc);
+}
+
+.form-control:focus {
+  outline: 2px solid var(--ulpgc-azul);
+}
+
+.contact-form .btn {
+  margin-top: 10px;
+}
+
+/* --- Estilo de tu diseño para la cabecera de la pregunta --- */
+.enlace-pregunta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.titulo-secundario {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.pregunta-titulo-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1; /* Ocupa el espacio disponible antes de los botones */
+}
+
+.texto-pregunta {
+  display: inline-block;
+}
+
+.enlace-pregunta:hover .texto-pregunta {
+  text-decoration: underline;
+  color: var(--ulpgc-azul);
+}
+
+.separador {
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background-color: var(--ulpgc-naranja);
+  margin-right: 12px;
+  flex-shrink: 0; /* Evita que la barra se encoja si el texto es muy largo y salta de línea */
+}

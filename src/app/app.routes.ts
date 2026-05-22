@@ -5,6 +5,7 @@ import { SubjectSelectComponent } from './components/subjects/subject-select/sub
 import { Asignatures } from './components/asignatures/asignatures';
 import { DocsReviewComponent } from './components/docs-review/docs-review';
 import { DocumentoForm } from './components/documento-form/documento-form';
+import { FaqComponent } from './components/faq/faq';
 
 export const routes: Routes = [
   { path: 'noticias', component: Noticias },
@@ -14,5 +15,6 @@ export const routes: Routes = [
   { path: 'asignaturas', component: SubjectSelectComponent },
   { path: 'docs-review', component: DocsReviewComponent },
   { path: '', redirectTo: 'noticias', pathMatch: 'full' },
-  { path: 'documentos/editar/:id', component: DocumentoForm}
+  { path: 'documentos/editar/:id', component: DocumentoForm},
+  { path: 'faq', component: FaqComponent }
 ];
