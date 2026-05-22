@@ -1,35 +1,48 @@
 <section class="revision-container">
   <h1>Revisión de Solicitudes de Subida de Documentos</h1>
 
-  <!-- Zona de Filtros -->
   <div class="filtros-container">
     <div class="filtro-grupo">
-      <input type="text" placeholder="Buscar por correo o ID..." [(ngModel)]="filtroTexto" class="input-filtro">
+      <input
+        type="text"
+        placeholder="Buscar por correo o ID..."
+        [ngModel]="filtroTexto()"
+        (ngModelChange)="filtroTexto.set($event)"
+        class="input-filtro"
+      >
     </div>
+
     <div class="filtro-grupo">
       <label class="titulo-gris">Grado</label>
-      <select [(ngModel)]="filtroGrado" class="input-filtro">
+      <select [ngModel]="filtroGrado()" (ngModelChange)="filtroGrado.set($event)" class="input-filtro">
         <option value="">Todos</option>
-        @for (g of grados; track g) { <option [value]="g">{{ g }}</option> }
+        @for (g of grados; track g) {
+          <option [value]="g">{{ g }}</option>
+        }
       </select>
     </div>
+
     <div class="filtro-grupo">
       <label class="titulo-gris">Asignatura</label>
-      <select [(ngModel)]="filtroAsignatura" class="input-filtro">
+      <select [ngModel]="filtroAsignatura()" (ngModelChange)="filtroAsignatura.set($event)" class="input-filtro">
         <option value="">Todas</option>
-        @for (a of asignaturas; track a) { <option [value]="a">{{ a }}</option> }
+        @for (a of asignaturas; track a) {
+          <option [value]="a">{{ a }}</option>
+        }
       </select>
     </div>
-        <div class="filtro-grupo">
+
+    <div class="filtro-grupo">
       <label class="titulo-gris">Estado</label>
-      <select [(ngModel)]="filtroEstado" class="input-filtro">
+      <select [ngModel]="filtroEstado()" (ngModelChange)="filtroEstado.set($event)" class="input-filtro">
         <option value="">Todos</option>
-        @for (e of estado; track e) { <option [value]="e">{{ e }}</option> }
+        @for (e of estado; track e) {
+          <option [value]="e">{{ e }}</option>
+        }
       </select>
     </div>
   </div>
 
-  <!-- Tabla de Solicitudes -->
   <div class="tabla-responsive">
     <table class="tabla-solicitudes">
       <thead>
@@ -38,12 +51,13 @@
           <th>Grado</th>
           <th>Asignatura</th>
           <th>Correo Institucional</th>
-          <th>Descripción del Documento</th>
-          <th>Documento Subido</th>
+          <th>Descripción</th>
+          <th>Documento</th>
           <th>Estado</th>
           <th>Acciones</th>
         </tr>
       </thead>
+
       <tbody>
         @for (solicitud of solicitudesMostradas(); track solicitud.id) {
           <tr>
@@ -52,50 +66,130 @@
             <td>{{ solicitud.asignatura }}</td>
             <td>{{ solicitud.correo }}</td>
             <td class="descripcion-celda">{{ solicitud.descripcion }}</td>
+
             <td class="doc-celda">
-              <!-- Simulación de icono según el tipo -->
-              <span class="icono-doc" [class.pdf]="solicitud.tipoArchivo === 'pdf'" [class.word]="solicitud.tipoArchivo === 'doc'">
-                {{ solicitud.tipoArchivo | uppercase }}
-              </span>
-              <a href="#" class="enlace-ver">Ver</a>
+              <div class="doc-info">
+                <span
+                  class="icono-doc"
+                  [class.pdf]="solicitud.tipoArchivo === 'pdf'"
+                  [class.word]="solicitud.tipoArchivo === 'doc'"
+                >
+                  {{ solicitud.tipoArchivo | uppercase }}
+                </span>
+
+                <a
+                  [href]="solicitud.urlArchivo"
+                  target="_blank"
+                  class="enlace-ver"
+                >
+                  Ver
+                </a>
+              </div>
+
+              <div class="doc-separador"></div>
+
+<div class="acciones-documento" >
+
+  <a
+    class="btn-icono editar"
+    title="Editar documento"
+    [routerLink]="['/documentos/editar', solicitud.documentoId]"
+    [queryParams]="{ returnUrl: '/docs-review' }"
+  >
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+</svg>
+  </a>
+
+  <button
+    type="button"
+    class="btn-icono borrar"
+    title="Eliminar documento"
+    (click)="eliminarDocumento(solicitud.documentoId)"
+  >
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+</svg>
+  </button>
+
+</div>
             </td>
-            <td>{{ solicitud.estado }}</td>
+
+            <td>
+  <span
+    class="estado-badge"
+    [class.estado-pendiente]="solicitud.estado === 'Pendiente'"
+    [class.estado-aprobado]="solicitud.estado === 'Aprobado'"
+    [class.estado-rechazado]="solicitud.estado === 'Rechazado'"
+  >
+    {{ solicitud.estado }}
+  </span>
+</td>
+
             <td class="acciones-celda">
-              <button class="btn btn-aprobar" (click)="gestionarSolicitud(solicitud.id, 'Aprobado')">Aprobar</button>
-              <button class="btn btn-rechazar" (click)="gestionarSolicitud(solicitud.id, 'Rechazado')">Rechazar</button>
-              <button class="btn btn-gris" (click)="verDetalles(solicitud.id)">Ver Detalles</button>
+              @if (solicitud.estado === 'Pendiente') {
+                <button
+                  class="btn btn-aprobar"
+                  (click)="gestionarSolicitud(solicitud.id, 'Aprobado')"
+                >
+                  Aprobar
+                </button>
+
+                <button
+                  class="btn btn-rechazar"
+                  (click)="gestionarSolicitud(solicitud.id, 'Rechazado')"
+                >
+                  Rechazar
+                </button>
+              }
+
+              <button
+                class="btn btn-gris"
+                (click)="verDetalles(solicitud.id)"
+              >
+                Ver detalles
+              </button>
             </td>
           </tr>
         } @empty {
           <tr>
-            <td colspan="8" class="text-center empty-state">No hay solicitudes pendientes con los filtros aplicados.</td>
+            <td colspan="8" class="text-center empty-state">
+              No hay solicitudes con los filtros aplicados.
+            </td>
           </tr>
         }
       </tbody>
     </table>
   </div>
 </section>
+
 @if (mostrarModal()) {
   <div class="modal-overlay" (click)="cerrarModal()">
-    
     <div class="modal-container" (click)="$event.stopPropagation()">
       <h2 class="modal-titulo">Confirmar acción</h2>
-      
+
       <p class="modal-texto">
-        ¿Estás seguro de que quieres marcar la solicitud <strong>{{ solicitudSeleccionada() }}</strong> como <strong>{{ accionSeleccionada() }}</strong>?
+        ¿Estás seguro de que quieres marcar la solicitud
+        <strong>{{ solicitudSeleccionada() }}</strong>
+        como
+        <strong>{{ accionSeleccionada() }}</strong>?
       </p>
 
       <div class="modal-botones">
-        <button class="btn btn-gris" (click)="cerrarModal()">Cancelar</button>
-        
-        <button class="btn" 
-                [class.btn-aprobar]="accionSeleccionada() === 'Aprobado'"
-                [class.btn-rechazar]="accionSeleccionada() === 'Rechazado'"
-                (click)="confirmarAccion()">
+        <button class="btn btn-gris" (click)="cerrarModal()">
+          Cancelar
+        </button>
+
+        <button
+          class="btn"
+          [class.btn-aprobar]="accionSeleccionada() === 'Aprobado'"
+          [class.btn-rechazar]="accionSeleccionada() === 'Rechazado'"
+          (click)="confirmarAccion()"
+        >
           Sí, {{ accionSeleccionada() }}
         </button>
       </div>
     </div>
-    
   </div>
 }

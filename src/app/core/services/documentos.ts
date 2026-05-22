@@ -40,4 +40,9 @@ export class DocumentosService {
       )
     );
   }
+eliminarDocumento(id: number) {
+  this.documentos.update(documentos =>
+    documentos.filter(documento => documento.id !== id)
+  );
+}
 }

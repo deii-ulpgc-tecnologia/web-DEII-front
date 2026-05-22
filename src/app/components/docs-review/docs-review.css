@@ -15,6 +15,7 @@ h1 {
   gap: 1.5rem;
   margin-bottom: 2rem;
   align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .filtro-grupo {
@@ -47,7 +48,8 @@ h1 {
   overflow: hidden;
 }
 
-.tabla-solicitudes th, .tabla-solicitudes td {
+.tabla-solicitudes th,
+.tabla-solicitudes td {
   padding: 1rem;
   text-align: left;
   border-bottom: 1px solid #eee;
@@ -73,9 +75,25 @@ h1 {
 
 /* Documentos */
 .doc-celda {
+  min-width: 160px;
+}
+
+.doc-info {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.doc-separador {
+  height: 1px;
+  background-color: #ddd;
+  margin: 0.55rem 0;
+}
+
+.acciones-documento {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .icono-doc {
@@ -85,13 +103,42 @@ h1 {
   font-weight: bold;
   color: white;
 }
-.icono-doc.pdf { background-color: #e53935; }
-.icono-doc.word { background-color: #1e88e5; }
+
+.icono-doc.pdf {
+  background-color: #e53935;
+}
+
+.icono-doc.word {
+  background-color: #1e88e5;
+}
 
 .enlace-ver {
   color: var(--ulpgc-azul);
   text-decoration: underline;
   cursor: pointer;
+}
+
+.btn-icono {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.15rem;
+  text-decoration: none;
+  padding: 0.25rem 0.45rem;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+.btn-icono:hover {
+  background-color: #e9e9e9;
+}
+
+.btn-icono.editar {
+  color: var(--ulpgc-azul);
+}
+
+.btn-icono.borrar {
+  color: #d32f2f;
 }
 
 /* Botones de acción específicos de la tabla */
@@ -101,46 +148,45 @@ h1 {
   gap: 0.5rem;
 }
 
-.btn-aprobar { 
+.btn-aprobar {
   background-color: var(--ulpgc-azul);
-  color: white; 
+  color: white;
 }
 
 .btn-aprobar:hover {
-   background-color: #1363c4; 
+  background-color: #1363c4;
 }
 
-.btn-rechazar { 
-  background-color: #c62828; 
-  color: white; 
+.btn-rechazar {
+  background-color: #c62828;
+  color: white;
 }
 
-.btn-rechazar:hover { 
-  background-color: #b71c1c; 
+.btn-rechazar:hover {
+  background-color: #b71c1c;
 }
 
-.btn-gris { 
-  background-color: #939393; 
-  color: white; 
+.btn-gris {
+  background-color: #939393;
+  color: white;
 }
 
-.btn-gris:hover { 
-  background-color:var(--ulpgc-gris); 
+.btn-gris:hover {
+  background-color: var(--ulpgc-gris);
 }
 
-.text-center { 
-  text-align: center; 
+.text-center {
+  text-align: center;
 }
 
-.empty-state { 
-  padding: 3rem; 
-  color: var(--ulpgc-gris); 
-  font-style: var(--font-ulpgc); 
+.empty-state {
+  padding: 3rem;
+  color: var(--ulpgc-gris);
+  font-family: var(--font-ulpgc);
+  font-style: italic;
 }
 
-/* =========================================
-   ESTILOS PARA LA VENTANA MODAL 
-   ========================================= */
+/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -199,11 +245,53 @@ h1 {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideIn {
-  from { transform: translateY(-30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.estado-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  min-width: 100px;
+  text-align: center;
+}
+
+/* Pendiente */
+.estado-pendiente {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+/* Aprobado */
+.estado-aprobado {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+/* Rechazado */
+.estado-rechazado {
+  background-color: #f8d7da;
+  color: #842029;
 }

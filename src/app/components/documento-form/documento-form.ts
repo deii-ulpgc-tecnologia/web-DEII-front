@@ -1,7 +1,7 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { Solitude } from '../../core/services/solitude';
 import { Documento } from '../../core/models/documento';
 import { Asignatura } from '../../core/models/asignatura';
 import { DocumentosService } from '../../core/services/documentos';
@@ -16,7 +16,7 @@ export class DocumentoForm {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private documentosService = inject(DocumentosService);
-
+private solicitudesService = inject(Solitude);
   documento = signal<Documento>({
     id: 0,
     nombre: '',
@@ -390,10 +390,21 @@ export class DocumentoForm {
     }));
   }
 
-  guardarCambios() {
-    this.documentosService.actualizarDocumento(this.documento());
-    this.router.navigate(['/documentos']);
-  }
+guardarCambios() {
+  const documentoActualizado = this.documento();
+
+  this.documentosService.actualizarDocumento(documentoActualizado);
+
+  this.solicitudesService.actualizarDesdeDocumento(documentoActualizado.id, {
+    grado: documentoActualizado.carrera,
+    asignatura: documentoActualizado.asignatura,
+    descripcion: documentoActualizado.nombre
+  });
+
+  const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+
+  this.router.navigateByUrl(returnUrl ?? '/documentos');
+}
 
   normalizar(texto: string): string {
     return texto
