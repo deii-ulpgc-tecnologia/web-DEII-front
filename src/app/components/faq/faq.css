@@ -83,7 +83,7 @@ h1 {
   row-gap: 20px;
   column-gap: 40px;
   padding: 20px;
-  background-color: #fff; /* Opcional: fondo blanco para que resalte dentro del acordeón */
+  background-color: #fff;
 }
 
 .icon-btn-naranja {
@@ -193,7 +193,6 @@ h1 {
   margin-top: 10px;
 }
 
-/* --- Estilo de tu diseño para la cabecera de la pregunta --- */
 .enlace-pregunta {
   display: flex;
   justify-content: space-between;
@@ -213,7 +212,7 @@ h1 {
 .pregunta-titulo-wrapper {
   display: flex;
   align-items: center;
-  flex: 1; /* Ocupa el espacio disponible antes de los botones */
+  flex: 1;
 }
 
 .texto-pregunta {
@@ -231,5 +230,5 @@ h1 {
   height: 20px;
   background-color: var(--ulpgc-naranja);
   margin-right: 12px;
-  flex-shrink: 0; /* Evita que la barra se encoja si el texto es muy largo y salta de línea */
+  flex-shrink: 0;
 }

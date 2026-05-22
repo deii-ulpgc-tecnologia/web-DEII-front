@@ -23,17 +23,14 @@ interface FaqCategory {
   styleUrls: ['./faq.css']
 })
 export class FaqComponent {
-  // Estado de Autenticación (Placeholder)
   isDelegate: boolean = false;
 
-  // Estado del buscador
   searchTerm: string = '';
 
-  // Control de acordeones abiertos
   expandedCategories: Set<number> = new Set<number>();
   expandedQuestions: Set<number> = new Set<number>();
 
-  // Datos mockeados
+  // QUITAR CUANDO SE HAGA LA IMPLEMENTACIÓN CON LA BASE DE DATOS
   categories: FaqCategory[] = [
     {
       id: 1,
@@ -59,7 +56,7 @@ export class FaqComponent {
     }
   ];
 
-  // Alternar modo Delegado
+  // QUITAR CUANDO SE HAGA LA AUTENTICACIÓN REAL
   toggleDelegate() {
     this.isDelegate = !this.isDelegate;
   }
