@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { Noticias } from './components/noticias/noticias';
 import { NoticiaFormComponent } from './components/noticia-form/noticia-form';
-import { isDocEntryWithSourceInfo } from '@angular/compiler-cli';
 import { Docs } from './components/docs/docs'; // Se añade ruta para el componente
 
 

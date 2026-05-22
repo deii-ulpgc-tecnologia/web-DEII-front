@@ -27,6 +27,17 @@ export class Docs {
     return this.selectedGrade ? this.asignatureGrade[this.selectedGrade] : [];
   }
 
+  //Comprueba que los campos esten rellenados correctamente antes de activar el boton
+  get formAvailable(): boolean {
+    return (
+      this.selectedGrade !== "" &&
+      this.selectedAsignature !== "" &&
+      this.emailProv.endsWith("@alu.ulpgc.es")
+    );
+  }
+  //Faltaría comprobar si el documento esta cargado o no, se queda asi por ahora
+  //Añadir despues cuando se implemente el back
+
   //Eventos
   onGradeChange(newGrade: string) {
     this.selectedGrade = newGrade;
@@ -60,6 +71,14 @@ export class Docs {
   onDescriptionChange(event: Event) {
     const element = event.target as HTMLSelectElement;
     this.descriptionProv= element.value;
+  }
+
+  onSubmit() {
+    if (!this.emailProv || this.emailError) {
+      alert("NO");
+      this.emailError = true;
+      return;
+    }
   }
 
 }

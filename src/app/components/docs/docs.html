@@ -2,7 +2,7 @@
   <div class = "doc-container">
 
     <section class = "drop-placeholder">
-      <article class = "upload-icon">⬆️</article>
+      <article class = "upload-icon"><i class="bi bi-file-earmark-arrow-up"></i></article>
       <p>(Área de subida en construcción)</p>
     </section>
 
@@ -18,7 +18,6 @@
     </select>
 
     <select
-      #asignatureSelect
       [value] = "selectedAsignature"
       (change) = "onAsignatureChange($event)"
       [disabled] = "!selectedGrade"
@@ -43,7 +42,7 @@
       placeholder = "Correo institucional">
 
     @if (emailError) {
-      <span class = "error-message">Debes usar el correo institucional</span>
+      <span class = "error-message">Se tiene que usar el correo institucional</span>
     }
 
     <textarea
@@ -55,6 +54,13 @@
     <section class = "custom-input">
       (CORREO DE LA DEII)
     </section>
+
+    <button
+      class = "submit-btn"
+      (click)="onSubmit()"
+      [disabled] = "!formAvailable">
+      Enviar documentación
+    </button>
 
   </div>
 </div>

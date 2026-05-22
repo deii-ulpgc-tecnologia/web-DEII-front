@@ -49,7 +49,7 @@
 }
 
 .custom-input:focus {
-  outline: 2px solid #0056b3;
+  outline: 2px solid var(--ulpgc-azul);
 }
 
 .custom-input:disabled {
@@ -65,4 +65,38 @@
 
 select.custom-input:not(:disabled) {
   cursor: pointer;
+}
+
+.submit-btn {
+  margin-top: 10px;
+  padding: 15px;
+  background-color: var(--ulpgc-naranja);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: var(--font-ulpgc), serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  width: auto;
+}
+
+.submit-btn:hover {
+  background-color: rgb(209 133 2);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+  background-color: #cccccc;
+  color: #777777;
+  cursor: not-allowed;
+  transition: none;
+}
+
+.submit-btn:disabled:hover {
+  background-color: #cccccc;
 }
