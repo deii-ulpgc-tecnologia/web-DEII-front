@@ -1,0 +1,20 @@
+<section class="accordion">
+  @for (year of [1, 2, 3, 4]; track year) {
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#' + degree + '-' + year"
+                aria-expanded="false"
+                [attr.aria-controls]="degree + '-' + year">
+          {{ordinals[year]}} año
+        </button>
+      </h2>
+      <div [id]="degree + '-' + year" class="accordion-collapse collapse">
+        <div class="accordion-body">
+          <app-semester-accordion [degree]="degree" [year]="year"/>
+        </div>
+      </div>
+    </div>
+  }
+</section>
