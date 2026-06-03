@@ -1,0 +1,38 @@
+@if (isVisible) {
+  <div class="popup-overlay">
+    <div class="popup-container">
+
+      <h2 class="popup-title">Normas de subida de documentos</h2>
+
+      <div class="popup-content">
+        <li>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </li>
+        <li>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+          eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+          sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </li>
+      </div>
+
+      <div class="popup-actions">
+        <!-- El botón sigue usando [disabled] de la misma forma -->
+        <button
+          class="accept-btn"
+          [disabled]="countdown > 0"
+          (click)="acceptRules()">
+
+          @if (countdown > 0) {
+            <span>He leído las normas ({{ countdown }}s)</span>
+          } @else {
+            <span>Aceptar y continuar</span>
+          }
+
+        </button>
+      </div>
+
+    </div>
+  </div>
+}
