@@ -20,25 +20,25 @@
 }
 
 .titulo h1 {
-  font-size: 28px;
+  font-size: 32px;
   margin: 0;
   font-weight: bold;
   font-family: var(--font-ulpgc);
 }
 
 .titulo h2 {
-  font-size: 24px;
-  margin: 0;
+  font-size: 28px;
+  margin-bottom: 20px;
   font-weight: bold;
   font-family: var(--font-ulpgc);
 }
 
 .placeholder-img {
   width: 100%;
-  max-width: 300px;
+  max-width: 600px;
   height: auto;
   display: block;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   margin-top: auto;
 }
 
@@ -46,7 +46,7 @@
   width: 85%;
   text-align: center;
   color: #333;
-  font-size: 13px;
+  font-size: 18px;
   line-height: 1.6;
   margin-top: 0px;
   margin-bottom: 40px;
