@@ -9,7 +9,7 @@ export class AuthService {
   private http = inject(HttpClient);
   
   // Cambiar por la URL de tu backend Django
-  private apiUrl = 'https://deii.narurm.eu/admin/login'; 
+  private apiUrl = 'https://deii.narurm.eu/api'; 
 
   login(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/login/`, { username, password })
