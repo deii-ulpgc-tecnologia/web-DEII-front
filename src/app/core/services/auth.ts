@@ -1,54 +1,38 @@
-import { Injectable, computed, inject, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-
-interface LoginRequest {
-  username: string;
-  password: string;
-}
-
-interface LoginResponse {
-  access: string;
-  refresh: string;
-}
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private http = inject(HttpClient);
-  private router = inject(Router);
+  
+  // Cambiar por la URL de tu backend Django
+  private apiUrl = 'https://deii.narurm.eu/admin/login'; 
 
-  private apiUrl = 'http://127.0.0.1:8000/api';
-
-  accessToken = signal<string | null>(localStorage.getItem('access'));
-  refreshToken = signal<string | null>(localStorage.getItem('refresh'));
-
-  estaLogueado = computed(() => !!this.accessToken());
-
-  login(data: LoginRequest) {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login/`, data);
+  login(username: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login/`, { username, password })
+      .pipe(
+        tap((response: any) => {
+          if (response && response.access) {
+            localStorage.setItem('accessToken', response.access);
+            localStorage.setItem('refreshToken', response.refresh);
+          }
+        })
+      );
   }
 
-  guardarTokens(tokens: LoginResponse) {
-    localStorage.setItem('access', tokens.access);
-    localStorage.setItem('refresh', tokens.refresh);
-
-    this.accessToken.set(tokens.access);
-    this.refreshToken.set(tokens.refresh);
+  logout(): void {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
   }
 
-  logout() {
-    localStorage.removeItem('access');
-    localStorage.removeItem('refresh');
-
-    this.accessToken.set(null);
-    this.refreshToken.set(null);
-
-    this.router.navigate(['/login']);
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('accessToken');
   }
 
-  getAccessToken() {
-    return this.accessToken();
+  checkGroup(groupName: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/check-group/?group=${groupName}`);
   }
 }

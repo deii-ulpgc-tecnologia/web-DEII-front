@@ -12,8 +12,8 @@
     <input
       class="form-control"
       type="text"
-      [ngModel]="username()"
-      (ngModelChange)="username.set($event)"
+      [(ngModel)]="username"
+      (keydown.enter)="iniciarSesion()"
     >
   </div>
 
@@ -22,13 +22,20 @@
     <input
       class="form-control"
       type="password"
-      [ngModel]="password()"
-      (ngModelChange)="password.set($event)"
+      [(ngModel)]="password"
       (keydown.enter)="iniciarSesion()"
     >
   </div>
 
-  <button class="btn btn-primary w-100" (click)="iniciarSesion()">
-    Entrar
+  <button 
+    class="btn btn-primary w-100" 
+    (click)="iniciarSesion()"
+    [disabled]="isLoading()"
+  >
+    @if (isLoading()) {
+      Iniciando sesión...
+    } @else {
+      Entrar
+    }
   </button>
 </div>
