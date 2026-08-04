@@ -8,8 +8,8 @@ import { Observable, tap } from 'rxjs';
 export class AuthService {
   private http = inject(HttpClient);
   
-  // Cambiar por la URL de tu backend Django
-  private apiUrl = 'https://deii.narurm.eu/api'; 
+  // ¡Aquí está la clave! La URL base según la wiki es /auth
+  private apiUrl = 'https://deii.narurm.eu/auth'; 
 
   login(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/login/`, { username, password })
@@ -33,6 +33,8 @@ export class AuthService {
   }
 
   checkGroup(groupName: string): Observable<any> {
+    // Usamos check-group/ porque así lo tienes programado en tu urls.py.
+    // (Nota: en la wiki hay una pequeña errata tipográfica donde dice "check-goup").
     return this.http.get(`${this.apiUrl}/check-group/?group=${groupName}`);
   }
 }
