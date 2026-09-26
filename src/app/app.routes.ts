@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { Noticias } from './components/noticias/noticias';
 import { NoticiaFormComponent } from './components/noticia-form/noticia-form';
-import { Docs } from './components/docs/docs'; // Se añade ruta para el componente
+import { Docs } from './components/docs/docs';
 
 import { SubjectSelectComponent } from './components/subjects/subject-select/subject-select.component';
 import { Asignatures } from './components/asignatures/asignatures';
@@ -11,13 +11,12 @@ import { FaqComponent } from './components/faq/faq';
 import { AboutUs } from './components/about-us/about-us';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'noticias', pathMatch: 'full' },
   { path: 'noticias', component: Noticias },
   { path: 'asignatura', component: Asignatures },
-  { path: 'noticias/crear', component: NoticiaFormComponent }, // Ruta para crear
-  { path: 'noticias/editar/:id', component: NoticiaFormComponent }, // Ruta para editar
-  { path: 'docs', component: Docs }, // Ruta subida documentos
-  { path: '', redirectTo: 'docs', pathMatch: 'full' },
-  { path: '', redirectTo: 'noticias', pathMatch: 'full' },
+  { path: 'noticias/crear', component: NoticiaFormComponent },
+  { path: 'noticias/editar/:id', component: NoticiaFormComponent },
+  { path: 'docs', component: Docs },
   { path: 'about-us', component: AboutUs },
   { path: 'asignaturas', component: SubjectSelectComponent },
   { path: 'docs-review', component: DocsReviewComponent },
