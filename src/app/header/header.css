@@ -6,7 +6,7 @@
 .custom-brand {
   color: white;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 2rem;
   text-decoration: none;
 }
 
@@ -15,16 +15,38 @@
 }
 
 .custom-link {
+  position: relative;
   color: white;
   margin-left: 1rem;
-  transition: 0.3s ease;
+  font-size: 1.2rem;
+  border-radius: 0;
+  transition: color 0.2s ease;
 }
 
 .custom-link:hover,
 .custom-link:focus,
 .custom-link.active {
   color: white;
-  opacity: 0.8;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.custom-link::after {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0.2rem;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.custom-link:hover::after,
+.custom-link.active::after {
+  transform: scaleX(1);
 }
 
 .login-btn {
@@ -49,4 +71,62 @@
 
 .custom-toggler .navbar-toggler-icon {
   filter: invert(1);
+}
+
+.nav-item-solicitudes {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item-solicitudes .custom-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge-notificacion {
+  background-color: #d32f2f;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 999px;
+  min-width: 20px;
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .custom-link {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .custom-link::after {
+    left: 0;
+    right: auto;
+    width: 40px;
+  }
+
+  .nav-item-solicitudes {
+    align-items: flex-start;
+  }
+
+  .login-btn {
+    width: fit-content;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

@@ -1,0 +1,51 @@
+<main class = "principal-container">
+  <h1 class = "asignature-title"><u>Nombre de la asignatura</u></h1>
+  <section class = "seccion-recursos">
+    <h2 class="seccion-title">Teoría</h2>
+    <article class="cuadri-archives">
+      @for (archivo of teoria; track archivo.nombre) {
+        <a [href]="archivo.url" class="enlace-archivo">
+          <span class = "separador"></span>
+          {{ archivo.nombre}}
+        </a>
+      }
+    </article>
+  </section>
+
+  <section class = "seccion-recursos">
+    <h2 class="seccion-title">Prácticas</h2>
+    <article class="cuadri-archives">
+      @for (archivo of practicas; track archivo.nombre) {
+        <a [href]="archivo.url" class = "enlace-archivo">
+          <span class = "separador"></span>
+          {{ archivo.nombre}}
+        </a>
+      }
+    </article>
+  </section>
+
+  <section class = "seccion-recursos">
+    <h2 class="seccion-title">Bibliografía</h2>
+    <article class="cuadri-archives">
+      @for (archivo of bibliografia; track archivo.nombre) {
+        <a [href]="archivo.url" class = "enlace-archivo">
+          <span class = "separador"></span>
+          {{ archivo.nombre}}
+        </a>
+      }
+    </article>
+  </section>
+
+  <section class = "seccion-recursos">
+    <h2 class="seccion-title">Apuntes</h2>
+    <article class="cuadri-archives">
+      @for (archivo of apuntes; track archivo.nombre) {
+        <a [href]="archivo.url" class = "enlace-archivo">
+          <span class = "separador"></span>
+          {{ archivo.nombre}}
+        </a>
+      }
+    </article>
+  </section>
+
+</main>

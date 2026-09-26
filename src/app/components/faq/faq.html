@@ -1,0 +1,98 @@
+<div class="faq-container">
+  
+  <div class="header-actions">
+    <button class="btn" [ngClass]="isDelegate ? 'btn-azul' : 'btn-naranja'" (click)="toggleDelegate()">
+      Modo: {{ isDelegate ? 'Delegado Autenticado' : 'Usuario Normal' }}
+    </button>
+  </div>
+
+  <h1>Apartado de Preguntas y Respuestas</h1>
+  
+  <div class="search-section">
+    <h3 class="titulo-secundario">Filtrar por categoría</h3>
+    <div class="search-input-wrapper">
+      <input
+        type="text"
+        placeholder="Busca tu pregunta..."
+        [(ngModel)]="searchTerm" 
+        class="search-input"
+      >
+    </div>
+  </div> <hr class="separator">
+
+  <div class="categories-list">
+    @for (cat of filteredCategories; track cat.id) {
+      <div class="category-block">
+        
+        <div 
+          class="category-header" 
+          [class.active]="expandedCategories.has(cat.id)"
+          (click)="toggleCategory(cat.id)">
+          <span class="titulo-secundario">{{ cat.title }} ({{ cat.items.length }} preguntas)</span>
+          <button class="icon-btn-naranja">
+            {{ expandedCategories.has(cat.id) ? '−' : '＋' }}
+          </button>
+        </div>
+
+        @if (expandedCategories.has(cat.id)) {
+          <div class="questions-list cuadri-archives">
+            
+            @for (item of cat.items; track item.id) {
+              <div class="question-item">
+                
+                <div class="question-header enlace-pregunta" (click)="toggleQuestion(item.id)">
+                  <div class="pregunta-titulo-wrapper">
+                    <span class="separador"></span>
+                    <span class="texto-pregunta" [class.hidden-text]="item.isHidden">
+                      {{ item.question }} 
+                      @if (item.isHidden) {
+                        <span class="badge-hidden">(Oculta)</span>
+                      }
+                    </span>
+                  </div>
+                  
+                  @if (isDelegate) {
+                    <div class="delegate-actions">
+                      <button class="btn-icon" (click)="editQuestion(item, $event)" title="Editar">✏️</button>
+                      <button class="btn-icon" (click)="toggleVisibility(item, $event)" title="Mostrar/Ocultar">
+                        {{ item.isHidden ? '👁️' : '🙈' }}
+                      </button>
+                      <button class="btn-icon text-danger" (click)="deleteQuestion(cat.id, item.id, $event)" title="Eliminar">🗑️</button>
+                    </div>
+                  }
+                </div>
+
+                @if (expandedQuestions.has(item.id)) {
+                  <div class="answer-body">
+                    <p>{{ item.answer }}</p>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        }
+
+      </div>
+    }
+  </div>
+
+  <div class="contact-section">
+    <h3 class="titulo-secundario">¿No encuentras la respuesta? Envíanos tu pregunta</h3>
+    <form class="contact-form">
+      <div class="form-group">
+        <label class="titulo-secundario">Nombre</label>
+        <input type="text" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label class="titulo-secundario">Email</label>
+        <input type="email" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label class="titulo-secundario">Mensaje</label>
+        <textarea class="form-control" rows="3"></textarea>
+      </div>
+      <button type="button" class="btn btn-naranja">Enviar</button>
+    </form>
+  </div>
+
+</div>

@@ -6,8 +6,8 @@
 }
 
 .titulo-seccion {
+  margin-top: 1rem;
   font-size: 2.5rem;
-  font-weight: 900;
   margin-bottom: 2rem;
 }
 
@@ -99,26 +99,23 @@
   align-items: center;
 }
 
-/* Intercalar los tonos de gris */
 .tarjeta-noticia:nth-child(even) {
   background-color: #e4e7e9;
 }
 
-/* Clase para invertir el orden (Imagen a la derecha) */
 .tarjeta-noticia.reverso {
   flex-direction: row-reverse;
 }
 
-/* Ajustes de flex para que se vea balanceado */
 .tarjeta-imagen-wrapper {
-  flex: 0 0 30%; /* La imagen ocupa el 30% del ancho */
+  flex: 0 0 30%;
   display: flex;
 }
 
 .tarjeta-imagen {
   width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1; /* Cuadrado (Esto depende del formato de imagen que se vaya a usar) */
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border: 1px solid #ccc;
 }
@@ -130,7 +127,6 @@
   justify-content: center;
 }
 
-/* En la tarjeta inversa, se alinea el texto a la derecha como en el mockup */
 .tarjeta-noticia.reverso .tarjeta-info {
   text-align: right;
 }
@@ -145,7 +141,6 @@
 .tarjeta-info h3 {
   font-size: 1.8rem;
   margin: 0 0 1rem 0;
-  /* El color lo hereda de .titulo-secundario configurado en el CSS global */
 }
 
 .descripcion {
@@ -186,7 +181,6 @@
    ESTILOS DE DELEGADO
    ============================ */
 
-/* Alineación de la cabecera */
 .cabecera-pagina {
   display: flex;
   justify-content: space-between;
@@ -201,16 +195,14 @@
   gap: 1rem;
 }
 
-/* Borde para saber visualmente qué noticias están en el carrusel cuando se edita*/
 .tarjeta-noticia.borde-fijado {
   border: 2px solid var(--ulpgc-naranja);
 }
 
-/* Caja de herramientas flotante dentro de la tarjeta */
 .herramientas-delegado {
   position: absolute;
   top: 0;
-  right: 0; /* Arriba a la derecha del texto */
+  right: 0;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 5px;
   border-radius: 8px;
@@ -219,13 +211,11 @@
   gap: 5px;
 }
 
-/* En la tarjeta inversa, se ponen los botones a la izquierda para que no tapen la imagen */
 .tarjeta-noticia.reverso .herramientas-delegado {
   right: auto;
   left: 0;
 }
 
-/* Botones de acción */
 .btn-icon {
   background: none;
   border: none;
@@ -254,7 +244,6 @@
   color: #d32f2f;
 }
 
-/* En móviles se baja la barra de gestión un poco si no cabe */
 @media (max-width: 768px) {
   .cabecera-pagina {
     flex-direction: column;
