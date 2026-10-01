@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { Noticias } from './components/noticias/noticias';
 import { NoticiaFormComponent } from './components/noticia-form/noticia-form';
+import { Docs } from './components/docs/docs';
+
 import { SubjectSelectComponent } from './components/subjects/subject-select/subject-select.component';
 import { Asignatures } from './components/asignatures/asignatures';
 import { DocsReviewComponent } from './components/docs-review/docs-review';
@@ -10,11 +12,13 @@ import { AboutUs } from './components/about-us/about-us';
 import { Acknowledgments } from './components/acknowledgments/acknowledgments';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'noticias', pathMatch: 'full' },
   { path: 'noticias', component: Noticias },
   { path: 'asignatura', component: Asignatures },
-  { path: 'noticias/crear', component: NoticiaFormComponent }, // Ruta para crear
-  { path: 'noticias/editar/:id', component: NoticiaFormComponent }, // Ruta para editar
-  { path: '', redirectTo: 'agradecimientos', pathMatch: 'full' },
+  // { path: '', redirectTo: 'agradecimientos', pathMatch: 'full' },
+  { path: 'noticias/crear', component: NoticiaFormComponent },
+  { path: 'noticias/editar/:id', component: NoticiaFormComponent },
+  { path: 'docs', component: Docs },
   { path: 'about-us', component: AboutUs },
   { path: 'asignaturas', component: SubjectSelectComponent },
   { path: 'docs-review', component: DocsReviewComponent },
